@@ -1,15 +1,10 @@
 import type { NextPage } from "next";
+import { PageContainer } from "../components/PageContainer";
 
 const Home: NextPage = () => {
   return (
     <>
-      <main
-        style={{
-          margin: "auto",
-          maxWidth: "800px",
-          padding: "16px",
-        }}
-      >
+      <PageContainer>
         <h1>2 Room and a Boom</h1>
         <div
           style={{
@@ -21,10 +16,10 @@ const Home: NextPage = () => {
         >
           <button>New game</button>
           <button>Join game</button>
-          <button>Rules</button>
+          <button>Active game</button>
           <button>Role reference</button>
         </div>
-      </main>
+      </PageContainer>
     </>
   );
 };
