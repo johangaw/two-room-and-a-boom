@@ -9,4 +9,12 @@ export interface Player {
   readonly role?: Role;
 }
 
-const enum Role {}
+export type Team = "Red" | "Blue" | "Gray";
+
+export interface Role {
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly note?: string;
+  readonly team: Team;
+}
