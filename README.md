@@ -20,10 +20,6 @@ This is an inofficial version of the party game Two room and a Boom.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
 ```
