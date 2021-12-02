@@ -1,13 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Game } from "../../types/domain";
 import { ErrorDTO, NewGameDTO } from "../../types/dto";
-import * as memoryStorage from "../../repositories/memoryStorage";
+import { createGame } from "../../services/gameService";
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Game | ErrorDTO>
 ) {
-  console.log(req.method);
   if (req.method === "POST") {
     const newGameData = req.body;
     // TODO validate game data...
@@ -24,9 +23,4 @@ export default function handler(
   } else {
     res.status(404).json({ message: "Method not supported" });
   }
-}
-
-async function createGame(newGameData: NewGameDTO): Promise<Game> {
-  const game = await memoryStorage.createGame(newGameData);
-  return game;
 }

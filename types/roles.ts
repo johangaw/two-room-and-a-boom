@@ -102,3 +102,7 @@ export const Gambler: Role = {
   description: `At the end of the last round (the 1 minute round), before all players reveal their cards, you, the Gambler, must publicly announce which team (Red Team, Blue Team, or neither) you think won the game. If you are correct, you win. If you are incorrect, you lose.`,
   team: "Gray",
 };
+
+export function isSpy(role: Role): boolean {
+  return ["blue-spy", "red-spy"].includes(role.id);
+}

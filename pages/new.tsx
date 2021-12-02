@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
+import { ErrorMessage } from "../components/ErrorMesage";
 import { PageContainer } from "../components/PageContainer";
 import { useGameStorage } from "../components/useGameStorage";
 import { Game } from "../types/domain";
@@ -42,7 +43,7 @@ const NewGame: NextPage = () => {
         <input type="text" name="name" required />
         <button>Create game</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <ErrorMessage message={error}></ErrorMessage>
     </PageContainer>
   );
 };

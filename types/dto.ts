@@ -5,3 +5,7 @@ export interface ErrorDTO {
 export interface NewGameDTO {
   readonly name: string;
 }
+
+export interface NewPlayerDTO {
+  readonly name: string;
+}
