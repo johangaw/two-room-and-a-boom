@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         >
           <Link href={"/new"}>New game</Link>
           <Link href={"/join"}>Join game</Link>
-          <button>Active game</button>
+          <Link href={"/game/current"}>Active game</Link>
           <button>Role reference</button>
         </div>
       </PageContainer>
