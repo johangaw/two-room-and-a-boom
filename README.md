@@ -8,7 +8,8 @@ This is an inofficial version of the party game Two room and a Boom.
 - **Player** - A participant in a game
 - **gameID** - A globally uniq id for a specific game
 
-* [] A GameMaster should be able to create a new game by supplying a gameID
+* [x] A GameMaster should be able to create a new game by supplying a gameName
+  - The game should be assigned a gameID
 * [] A Player should be able to join a game by providing the corresponding gameID
   - The player should be assigned one of the available roles
   - Two players may not be assigned the same role instance (one role may have multiple instance in one game)

@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import { PageContainer } from "../components/PageContainer";
 
 const Home: NextPage = () => {
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
             rowGap: "16px",
           }}
         >
-          <button>New game</button>
+          <Link href={"/new"}>New game</Link>
           <button>Join game</button>
           <button>Active game</button>
           <button>Role reference</button>
