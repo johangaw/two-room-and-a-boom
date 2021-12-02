@@ -15,6 +15,6 @@ export interface Role {
   readonly id: string;
   readonly name: string;
   readonly description: string;
-  readonly note?: string;
+  readonly notes?: string[];
   readonly team: Team;
 }
