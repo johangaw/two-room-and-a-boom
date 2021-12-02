@@ -39,7 +39,7 @@ const getColor = (role: Role): string => {
     case "Red":
       return "red";
     case "Gray":
-      return "gray";
+      return "darkgray";
     default:
       return "pink";
   }
