@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { PageContainer } from "../../../components/PageContainer";
 
-const GameAdmin: NextPage = () => {
+const GameAdminPage: NextPage = () => {
   return (
     <PageContainer>
       <h1>Admin page</h1>
@@ -9,4 +9,4 @@ const GameAdmin: NextPage = () => {
   );
 };
 
-export default GameAdmin;
+export default GameAdminPage;
