@@ -23,6 +23,10 @@ This is an inofficial version of the party game Two room and a Boom.
 * [x] Complete Coy role
 * [x] Complete Mi6 role
 * [x] Complete Gambler role
+* [] A GameMaster should be able to starta a game from the admin page
+* [] Roles should be assigned to players when the game is started
+* [] A Player should not be able to join a started game
+* [] A Player should be able to reach the least game he/she visited from the start page
 
 ## Getting Started
 
