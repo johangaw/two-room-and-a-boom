@@ -22,7 +22,7 @@ const NewGame: NextPage = () => {
     if (res.ok) {
       const joinedGame: Game = await res.json();
       rememberJoinedGame(joinedGame);
-      router.replace(`/game/${joinedGame.id}/admin`);
+      router.replace(`/games/${joinedGame.id}/admin`);
     } else {
       setError(`Unable to create game: ${await res.text()}`);
     }

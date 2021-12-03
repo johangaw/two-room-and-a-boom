@@ -13,7 +13,7 @@ const JoinGame: NextPage = () => {
   const router = useRouter();
 
   const joinGame = async (newPlayer: NewPlayerDTO, gameId: string) => {
-    const res = await fetch(`/api/game/${gameId}/players`, {
+    const res = await fetch(`/api/games/${gameId}/players`, {
       method: "POST",
       body: JSON.stringify(newPlayer),
       headers: { "Content-Type": "application/json" },
