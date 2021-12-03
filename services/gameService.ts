@@ -16,6 +16,13 @@ import { FileStorage } from "../repositories/fileStorage";
 
 const storage: IStorage = new FileStorage();
 
+export async function getGame(gameId: string): Promise<Game> {
+  const game = await storage.getGame(gameId);
+  if (!game) throw new Error(`Game with id ${gameId} does not exists`);
+
+  return game;
+}
+
 export async function joinGame(
   newPlayer: NewPlayerDTO,
   gameId: string
