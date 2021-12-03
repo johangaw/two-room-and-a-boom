@@ -1,21 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getGame } from "../../../services/gameService";
-import { ErrorDTO, GameDTO } from "../../../types/dto";
+import { Game } from "../../../types/domain";
+import { ErrorDTO } from "../../../types/dto";
 
 export default function gameHandler(
   req: NextApiRequest,
-  res: NextApiResponse<GameDTO | ErrorDTO>
+  res: NextApiResponse<Game | ErrorDTO>
 ) {
   if (req.method === "GET") {
     const gameId = req.query.gameId as string;
 
     getGame(gameId)
-      .then((game) => ({
-        id: game.id,
-        name: game.name,
-        players: game.players,
-        roles: game.roles,
-      }))
+      .then((game) => ({ ...game, assignedRoles: [] }))
       .then((game) => res.status(200).json(game))
       .catch((err) => {
         res

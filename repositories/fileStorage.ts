@@ -32,11 +32,7 @@ export class FileStorage implements IStorage {
     return game;
   }
 
-  async addPlayerToGame(
-    newPlayer: Omit<Player, "id">,
-    gameId: string
-  ): Promise<Player> {
-    const player: Player = { ...newPlayer, id: randomUUID() };
+  async addPlayerToGame(player: Player, gameId: string): Promise<Game> {
     const games = await this.load();
     const newGames = games.map((g) =>
       g.id === gameId ? { ...g, players: g.players.concat(player) } : g
@@ -45,6 +41,6 @@ export class FileStorage implements IStorage {
     if (!game) return Promise.reject(`Unable to find game with id: ${gameId}`);
 
     await this.store(newGames);
-    return Promise.resolve(player);
+    return Promise.resolve(game);
   }
 }

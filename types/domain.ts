@@ -3,12 +3,12 @@ export interface Game {
   readonly id: string;
   readonly players: Player[];
   readonly roles: Role[];
+  readonly assignedRoles: [string, Role][];
 }
 
 export interface Player {
   readonly id: string;
   readonly name: string;
-  readonly role: Role;
 }
 
 export type Team = "Red" | "Blue" | "Gray";
@@ -24,8 +24,5 @@ export interface Role {
 export interface IStorage {
   getGame(gameId: string): Promise<Game | null>;
   createGame(gameData: Omit<Game, "id">): Promise<Game>;
-  addPlayerToGame(
-    newPlayer: Omit<Player, "id">,
-    gameId: string
-  ): Promise<Player>;
+  addPlayerToGame(player: Player, gameId: string): Promise<Game>;
 }

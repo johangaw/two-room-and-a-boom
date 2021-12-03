@@ -1,19 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { joinGame } from "../../../../services/gameService";
 import { Game, Player } from "../../../../types/domain";
-import { ErrorDTO, NewPlayerDTO } from "../../../../types/dto";
+import { ErrorDTO } from "../../../../types/dto";
 
 export default function playersInGameHandler(
   req: NextApiRequest,
-  res: NextApiResponse<Player | ErrorDTO>
+  res: NextApiResponse<Game | ErrorDTO>
 ) {
   if (req.method === "POST") {
     const gameId = req.query.gameId as string;
-    const player: NewPlayerDTO = req.body;
+    const player: Player = req.body;
     // TODO validate player data...
 
     joinGame(player, gameId)
-      .then((player) => res.status(201).json(player))
+      .then((game) => res.status(201).json(game))
       .catch((err) => {
         res
           .status(422)

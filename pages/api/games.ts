@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Game } from "../../types/domain";
-import { ErrorDTO, NewGameDTO } from "../../types/dto";
+import { ErrorDTO } from "../../types/dto";
 import { createGame } from "../../services/gameService";
 
 export default function handler(

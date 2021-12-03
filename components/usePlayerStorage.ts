@@ -6,15 +6,24 @@ export const usePlayerStorage = () => {
 
   const [player, setPlayer] = useState<Player | null>(null);
 
+  const rememberPlayer = (player: Player) => {
+    setPlayer(player);
+    localStorage.setItem(KEY, JSON.stringify(player));
+  };
+
   useEffect(() => {
-    setPlayer(JSON.parse(localStorage.getItem(KEY) ?? "null"));
+    let player: Player | null = JSON.parse(localStorage.getItem(KEY) ?? "null");
+    if (!player) {
+      player = {
+        id: `${Math.random()}-${Math.random()}-${Math.random()}`,
+        name: "",
+      };
+    }
+    rememberPlayer(player);
   }, []);
 
   return {
-    rememberPlayer: (player: Player) => {
-      setPlayer(player);
-      localStorage.setItem(KEY, JSON.stringify(player));
-    },
+    rememberPlayer,
     player,
   };
 };
