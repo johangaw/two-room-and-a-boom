@@ -37,3 +37,15 @@ export const joinGame = (gameId: string, player: Player) => {
     }
   });
 };
+
+export const startGame = (gameId: string) => {
+  return fetch(`/api/games/${gameId}/start`, {
+    method: "POST",
+  }).then(async (res) => {
+    if (res.ok) {
+      return (await res.json()) as Game;
+    } else {
+      throw await res.text();
+    }
+  });
+};

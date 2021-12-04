@@ -43,4 +43,17 @@ export class FileStorage implements IStorage {
     await this.store(newGames);
     return Promise.resolve(game);
   }
+
+  async updateGame(gameData: Game): Promise<Game> {
+    const games = await this.load();
+    const newGames = games.map((g) =>
+      g.id === gameData.id ? { ...g, ...gameData } : g
+    );
+    const game = newGames.find((g) => g.id === gameData.id);
+    if (!game)
+      return Promise.reject(`Unable to find game with id: ${gameData.id}`);
+
+    await this.store(newGames);
+    return Promise.resolve(game);
+  }
 }

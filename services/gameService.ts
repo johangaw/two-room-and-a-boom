@@ -1,5 +1,5 @@
 import { Game, IStorage, Player, Role } from "../types/domain";
-import { NewGameDTO, NewPlayerDTO } from "../types/dto";
+import { NewGameDTO } from "../types/dto";
 import {
   President,
   BlueCoy,
@@ -21,6 +21,23 @@ export async function getGame(gameId: string): Promise<Game> {
   if (!game) throw new Error(`Game with id ${gameId} does not exists`);
 
   return game;
+}
+
+export async function startGame(gameId: string): Promise<Game> {
+  const game = await getGame(gameId);
+
+  if (game.players.length === 0) throw new Error("Not enough players.");
+
+  const assignedRoles = assignPlayerRoles(game);
+  if (assignedRoles.length < game.players.length)
+    throw new Error("Not enough roles for all player.");
+
+  const newGame = await storage.updateGame({
+    ...game,
+    assignedRoles,
+    started: true,
+  });
+  return newGame;
 }
 
 export async function getPlayerRole(
@@ -66,6 +83,7 @@ export async function createGame(newGameData: NewGameDTO): Promise<Game> {
     ...newGameData,
     players: [],
     assignedRoles: [],
+    started: false,
     roles: [
       President,
       BlueCoy,
@@ -82,6 +100,16 @@ export async function createGame(newGameData: NewGameDTO): Promise<Game> {
   return game;
 }
 
-function random<T>(list: T[]): T {
-  return list[Math.floor(Math.random() * list.length)];
+function assignPlayerRoles(game: Game): Game["assignedRoles"] {
+  const shuffledRoles = shuffle(game.roles);
+  return game.players
+    .map<[string, Role]>((p, i) => [p.id, shuffledRoles[i]])
+    .filter(([_, role]) => !!role);
+}
+
+function shuffle<T>(list: T[]): T[] {
+  return list
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
 }

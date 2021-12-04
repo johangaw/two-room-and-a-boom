@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getGame } from "../../../services/gameService";
+import { getGame, startGame } from "../../../services/gameService";
 import { Game } from "../../../types/domain";
 import { ErrorDTO } from "../../../types/dto";
 
@@ -7,9 +7,9 @@ export default async function gameHandler(
   req: NextApiRequest,
   res: NextApiResponse<Game | ErrorDTO>
 ) {
-  if (req.method === "GET") {
-    const gameId = req.query.gameId as string;
+  const gameId = req.query.gameId as string;
 
+  if (req.method === "GET") {
     return getGame(gameId)
       .then((game) => ({ ...game, assignedRoles: [] }))
       .then((game) => res.status(200).json(game))

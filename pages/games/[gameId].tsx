@@ -1,7 +1,9 @@
 import type { GetServerSideProps, NextPage } from "next";
-import { CSSProperties, FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Card } from "../../components/Card";
+import { centerCenter, fullSize } from "../../components/css";
 import { ErrorMessage } from "../../components/ErrorMessage";
+import { Loader } from "../../components/Loader";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
 import { useGame } from "../../components/useGame";
@@ -80,24 +82,10 @@ export const getServerSideProps: GetServerSideProps<Props, { gameId: string }> =
     };
   };
 
-const fullSize: CSSProperties = {
-  height: "100%",
-  width: "100%",
-};
-
-const centerCenter: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  textAlign: "center",
-};
-
 const LoadingPage: FC = () => {
   return (
     <PageContainer>
-      <div style={{ ...fullSize, ...centerCenter }}>
-        <h1>Loading...</h1>
-      </div>
+      <Loader />
     </PageContainer>
   );
 };
