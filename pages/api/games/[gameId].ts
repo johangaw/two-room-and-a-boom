@@ -3,14 +3,14 @@ import { getGame } from "../../../services/gameService";
 import { Game } from "../../../types/domain";
 import { ErrorDTO } from "../../../types/dto";
 
-export default function gameHandler(
+export default async function gameHandler(
   req: NextApiRequest,
   res: NextApiResponse<Game | ErrorDTO>
 ) {
   if (req.method === "GET") {
     const gameId = req.query.gameId as string;
 
-    getGame(gameId)
+    return getGame(gameId)
       .then((game) => ({ ...game, assignedRoles: [] }))
       .then((game) => res.status(200).json(game))
       .catch((err) => {
