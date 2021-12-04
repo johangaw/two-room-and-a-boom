@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { CSSProperties, FC, useEffect, useState } from "react";
 import { Card } from "../../components/Card";
-import { ErrorMessage } from "../../components/ErrorMesage";
+import { ErrorMessage } from "../../components/ErrorMessage";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
 import { usePlayerStorage } from "../../components/usePlayerStorage";

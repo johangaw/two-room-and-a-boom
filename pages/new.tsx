@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
-import { ErrorMessage } from "../components/ErrorMesage";
+import { ErrorMessage } from "../components/ErrorMessage";
 import { PageContainer } from "../components/PageContainer";
 import { useGameStorage } from "../components/useGameStorage";
 import { Game } from "../types/domain";
