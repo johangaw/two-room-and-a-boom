@@ -13,7 +13,7 @@ export const getGame = (gameId: string) => {
 };
 
 export const getPlayerRole = (gameId: string, playerId: string) => {
-  return fetch(`pages/api/games/${gameId}/players/${playerId}/role`, {
+  return fetch(`/api/games/${gameId}/players/${playerId}/role`, {
     headers: { "Content-Type": "application/json" },
   }).then(async (res) => {
     if (res.ok) {
