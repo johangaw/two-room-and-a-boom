@@ -4,12 +4,9 @@ import { Card } from "../../components/Card";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
+import { useGame } from "../../components/useGame";
 import { usePlayerStorage } from "../../components/usePlayerStorage";
-import {
-  getGame,
-  getPlayerRole,
-  joinGame,
-} from "../../connections/gameApiConnections";
+import { getPlayerRole, joinGame } from "../../connections/gameApiConnections";
 import { Game, Role } from "../../types/domain";
 
 interface Props {
@@ -18,24 +15,16 @@ interface Props {
 
 const GamePage: NextPage<Props> = ({ gameId }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [game, setGame] = useState<Game | null>(null);
   const [role, setRole] = useState<Role | null>(null);
   const { player, rememberPlayer } = usePlayerStorage();
+  const {
+    game,
+    loading: loadingGame,
+    error: loadingGameError,
+    refresh: refreshGame,
+  } = useGame(gameId);
   const playerId = player?.id;
   const hasJoined = game?.players?.some((p) => p.id === player?.id);
-
-  useEffect(() => {
-    if (game?.started) return;
-
-    const timeout = setTimeout(() => {
-      getGame(gameId)
-        .then(setGame)
-        .finally(() => setLoading(false));
-    });
-
-    return () => clearTimeout(timeout);
-  }, [gameId, game?.started]);
 
   useEffect(() => {
     if (!game?.started || !playerId) return;
@@ -48,8 +37,12 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
       });
   }, [game?.started, gameId, playerId]);
 
-  if (loading) {
+  if (loadingGame) {
     return <LoadingPage />;
+  }
+
+  if (loadingGameError) {
+    return <ErrorPage message={loadingGameError} />;
   }
 
   if (role) {
@@ -63,7 +56,7 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
         onSubmit={(name) => {
           const newPlayer = { ...player, name };
           rememberPlayer(newPlayer);
-          joinGame(gameId, newPlayer).then(setGame);
+          joinGame(gameId, newPlayer).then(refreshGame);
         }}
       />
     );
