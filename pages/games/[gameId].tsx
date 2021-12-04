@@ -5,13 +5,19 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
 import { usePlayerStorage } from "../../components/usePlayerStorage";
-import { Game, Player, Role } from "../../types/domain";
+import {
+  getGame,
+  getPlayerRole,
+  joinGame,
+} from "../../connections/gameApiConnections";
+import { Game, Role } from "../../types/domain";
 
 interface Props {
   gameId: string;
 }
 
 const GamePage: NextPage<Props> = ({ gameId }) => {
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [game, setGame] = useState<Game | null>(null);
   const [role, setRole] = useState<Role | null>(null);
@@ -19,53 +25,28 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
   const playerId = player?.id;
   const hasJoined = game?.players?.some((p) => p.id === player?.id);
 
-  const joinGame = (player: Player) => {
-    fetch(`/api/games/${gameId}/players`, {
-      method: "POST",
-      body: JSON.stringify(player),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json() as Promise<Game>;
-        } else {
-          throw res.text();
-        }
-      })
-      .then(setGame);
-  };
+  useEffect(() => {
+    if (game?.started) return;
+
+    const timeout = setTimeout(() => {
+      getGame(gameId)
+        .then(setGame)
+        .finally(() => setLoading(false));
+    });
+
+    return () => clearTimeout(timeout);
+  }, [gameId, game?.started]);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`/api/games/${gameId}`, {
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json() as Promise<Game>;
-        } else {
-          throw res.text();
-        }
-      })
-      .then(setGame)
-      .finally(() => setLoading(false));
-  }, [gameId, playerId]);
+    if (!game?.started || !playerId) return;
 
-  useEffect(() => {
-    if (!gameId || !playerId || !hasJoined) return;
-
-    const timerId = setTimeout(() => {
-      fetch(`pages/api/games/${gameId}/players/${playerId}/role`, {
-        headers: { "Content-Type": "application/json" },
-      }).then(async (res) => {
-        if (res.ok) {
-          setRole(await res.json());
-        }
+    getPlayerRole(gameId, playerId)
+      .then(setRole)
+      .catch((err) => {
+        console.error(err);
+        setError("No role has been assigned to this this player...");
       });
-    }, 5_000);
-
-    return () => clearTimeout(timerId);
-  }, [gameId, playerId, hasJoined]);
+  }, [game?.started, gameId, playerId]);
 
   if (loading) {
     return <LoadingPage />;
@@ -82,13 +63,13 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
         onSubmit={(name) => {
           const newPlayer = { ...player, name };
           rememberPlayer(newPlayer);
-          joinGame(newPlayer);
+          joinGame(gameId, newPlayer).then(setGame);
         }}
       />
     );
   }
 
-  if (game && hasJoined && player) {
+  if (game && hasJoined) {
     return <LobbyPage game={game} />;
   }
 

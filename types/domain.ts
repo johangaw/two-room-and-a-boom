@@ -4,6 +4,7 @@ export interface Game {
   readonly players: Player[];
   readonly roles: Role[];
   readonly assignedRoles: [string, Role][];
+  readonly started: boolean;
 }
 
 export interface Player {
