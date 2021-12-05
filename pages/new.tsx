@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { PageContainer } from "../components/PageContainer";
 import { useGameStorage } from "../components/useGameStorage";
+import { createGame } from "../connections/gameApiConnections";
 import { Game } from "../types/domain";
 import { NewGameDTO } from "../types/dto";
 
@@ -12,20 +13,13 @@ const NewGame: NextPage = () => {
   const { rememberJoinedGame } = useGameStorage();
   const [error, setError] = useState("");
 
-  const createGame = async (game: NewGameDTO) => {
-    const res = await fetch("/api/game", {
-      method: "POST",
-      body: JSON.stringify(game),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (res.ok) {
-      const joinedGame: Game = await res.json();
-      rememberJoinedGame(joinedGame);
-      router.replace(`/games/${joinedGame.id}/admin`);
-    } else {
-      setError(`Unable to create game: ${await res.text()}`);
-    }
+  const createGameHandler = async (game: NewGameDTO) => {
+    createGame(game)
+      .then((game) => {
+        rememberJoinedGame(game);
+        router.replace(`/games/${game.id}/admin`);
+      })
+      .catch((err) => setError(`Unable to create game: ${err}`));
   };
 
   return (
@@ -35,12 +29,15 @@ const NewGame: NextPage = () => {
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
-          createGame({
+          createGameHandler({
             name: (ev.target as any).name.value,
           });
         }}
       >
-        <input type="text" name="name" required />
+        <label>
+          Name
+          <input type="text" name="name" required />
+        </label>
         <button>Create game</button>
       </form>
       <ErrorMessage message={error}></ErrorMessage>

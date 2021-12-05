@@ -1,4 +1,5 @@
 import { Game, Role, Player } from "../types/domain";
+import { NewGameDTO } from "../types/dto";
 
 export const getGame = (gameId: string) => {
   return fetch(`/api/games/${gameId}`, {
@@ -48,4 +49,18 @@ export const startGame = (gameId: string) => {
       throw await res.text();
     }
   });
+};
+
+export const createGame = async (game: NewGameDTO) => {
+  const res = await fetch("/api/games", {
+    method: "POST",
+    body: JSON.stringify(game),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.ok) {
+    return await res.json();
+  } else {
+    throw await res.text();
+  }
 };
