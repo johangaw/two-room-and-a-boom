@@ -11,7 +11,7 @@ export default function playerRoleHandler(
     const gameId = req.query.gameId as string;
     const playerId = req.query.playerId as string;
 
-    getPlayerRole(gameId, playerId)
+    return getPlayerRole(gameId, playerId)
       .then((role) => res.status(200).json(role))
       .catch((err) => {
         res

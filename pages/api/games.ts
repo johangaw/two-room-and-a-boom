@@ -11,7 +11,7 @@ export default function handler(
     const newGameData = req.body;
     // TODO validate game data...
 
-    createGame(newGameData)
+    return createGame(newGameData)
       .then((game) => {
         res.status(201).json(game);
       })

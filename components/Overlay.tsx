@@ -1,4 +1,5 @@
 import { FC, MouseEventHandler, useRef } from "react";
+import { centerCenter } from "./css";
 
 interface OverlayProps {}
 
@@ -52,8 +53,11 @@ export const Overlay: FC<OverlayProps> = ({ children }) => {
           height: "100vh",
           position: "absolute",
           backgroundColor: "gray",
+          ...centerCenter,
         }}
-      ></div>
+      >
+        Cover
+      </div>
     </div>
   );
 };

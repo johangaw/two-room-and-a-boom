@@ -10,7 +10,7 @@ export default function startGameHandler(
   if (req.method === "POST") {
     const gameId = req.query.gameId as string;
 
-    startGame(gameId)
+    return startGame(gameId)
       .then((game) => res.status(200).json(game))
       .catch((err) => {
         res

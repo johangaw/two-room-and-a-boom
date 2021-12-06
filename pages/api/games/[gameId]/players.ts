@@ -12,7 +12,7 @@ export default function playersInGameHandler(
     const player: Player = req.body;
     // TODO validate player data...
 
-    joinGame(player, gameId)
+    return joinGame(player, gameId)
       .then((game) => res.status(201).json(game))
       .catch((err) => {
         res

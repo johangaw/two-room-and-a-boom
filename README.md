@@ -27,6 +27,7 @@ This is an inofficial version of the party game Two room and a Boom.
 * [] Roles should be assigned to players when the game is started
 * [] A Player should not be able to join a started game
 * [] A Player should be able to reach the least game he/she visited from the start page
+* [] Better error messages (not as JSON)
 
 ## Getting Started
 
