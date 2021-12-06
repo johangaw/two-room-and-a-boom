@@ -3,7 +3,6 @@ export {};
 describe("Create game Page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
-    cy.clearLocalStorage();
     cy.findByRole("link", { name: /new game/i }).click();
   });
 
