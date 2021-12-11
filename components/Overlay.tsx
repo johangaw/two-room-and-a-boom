@@ -1,30 +1,33 @@
-import { FC, MouseEventHandler, useRef } from "react";
+import { FC, ReactNode, useRef } from "react";
 import { centerCenter } from "./css";
 
-interface OverlayProps {}
+interface OverlayProps {
+  cover: ReactNode;
+}
 
-export const Overlay: FC<OverlayProps> = ({ children }) => {
+export const Overlay: FC<OverlayProps> = ({ children, cover }) => {
   const initialYRef = useRef(0);
   const draggingRef = useRef(false);
+  const coverRef = useRef<HTMLDivElement>(null);
 
-  const onDragStart: MouseEventHandler<HTMLDivElement> = (ev) => {
-    initialYRef.current = ev.clientY;
+  const onDragStart = (initialYOffset: number) => {
+    initialYRef.current = initialYOffset;
     draggingRef.current = true;
-    (ev.target as HTMLDivElement).style.transform = "";
-    (ev.target as HTMLDivElement).style.transition = "";
+    coverRef.current!.style.transform = "";
+    coverRef.current!.style.transition = "";
   };
 
-  const onDrag: MouseEventHandler<HTMLDivElement> = (ev) => {
+  const onDrag = (offsetY: number) => {
     if (!draggingRef.current) return;
-    (ev.target as HTMLDivElement).style.transform = `translateY(${
-      ev.clientY - initialYRef.current
+    coverRef.current!.style.transform = `translateY(${
+      offsetY - initialYRef.current
     }px)`;
   };
 
-  const onDragStop: MouseEventHandler<HTMLDivElement> = (ev) => {
+  const onDragStop = () => {
     draggingRef.current = false;
-    (ev.target as HTMLDivElement).style.transform = "translateY(0px)";
-    (ev.target as HTMLDivElement).style.transition = "all ease 0.5s";
+    coverRef.current!.style.transform = "translateY(0px)";
+    coverRef.current!.style.transition = "all ease 0.5s";
   };
 
   return (
@@ -44,10 +47,14 @@ export const Overlay: FC<OverlayProps> = ({ children }) => {
         {children}
       </div>
       <div
-        onMouseDown={onDragStart}
-        onMouseMove={onDrag}
+        ref={coverRef}
+        onMouseDown={(ev) => onDragStart(ev.clientY)}
+        onMouseMove={(ev) => onDrag(ev.clientY)}
         onMouseUp={onDragStop}
         onMouseLeave={onDragStop}
+        onTouchStart={(ev) => onDragStart(ev.touches.item(0).clientY)}
+        onTouchMove={(ev) => onDrag(ev.touches.item(0).clientY)}
+        onTouchEnd={onDragStop}
         style={{
           width: "100vw",
           height: "100vh",
@@ -56,7 +63,7 @@ export const Overlay: FC<OverlayProps> = ({ children }) => {
           ...centerCenter,
         }}
       >
-        Cover
+        {cover}
       </div>
     </div>
   );
