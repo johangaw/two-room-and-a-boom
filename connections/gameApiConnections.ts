@@ -1,5 +1,5 @@
 import { Game, Role, Player } from "../types/domain";
-import { NewGameDTO } from "../types/dto";
+import { GameUpdateDTO, NewGameDTO } from "../types/dto";
 
 export const getGame = (gameId: string) => {
   return fetch(`/api/games/${gameId}`, {
@@ -42,6 +42,23 @@ export const joinGame = (gameId: string, player: Player) => {
 export const startGame = (gameId: string) => {
   return fetch(`/api/games/${gameId}/start`, {
     method: "POST",
+  }).then(async (res) => {
+    if (res.ok) {
+      return (await res.json()) as Game;
+    } else {
+      throw await res.text();
+    }
+  });
+};
+
+export const updateGameRoles = (gameId: string, roleIds: string[]) => {
+  const payload: GameUpdateDTO = {
+    roleIds,
+  };
+  return fetch(`/api/games/${gameId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
   }).then(async (res) => {
     if (res.ok) {
       return (await res.json()) as Game;

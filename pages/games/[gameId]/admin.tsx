@@ -3,8 +3,14 @@ import { useRouter } from "next/dist/client/router";
 import { useEffect, useState } from "react";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { PageContainer } from "../../../components/PageContainer";
-import { getGame, startGame } from "../../../connections/gameApiConnections";
-import { Game } from "../../../types/domain";
+import { RoleSelect } from "../../../components/RoleSelect";
+import {
+  getGame,
+  startGame,
+  updateGameRoles,
+} from "../../../connections/gameApiConnections";
+import { ALL_ROLES } from "../../../roles/roles";
+import { Game, Role } from "../../../types/domain";
 
 const GameAdminPage: NextPage = () => {
   const [game, setGame] = useState<Game | null>(null);
@@ -21,6 +27,14 @@ const GameAdminPage: NextPage = () => {
     startGame(gameId).then(setGame).catch(setStartGameError);
   };
 
+  const updateRoles = (roles: Role[]) => {
+    if (!game) return;
+    updateGameRoles(
+      game.id,
+      roles.map((r) => r.id)
+    ).then(setGame);
+  };
+
   return (
     <PageContainer>
       {!game ? (
@@ -29,6 +43,12 @@ const GameAdminPage: NextPage = () => {
         <>
           <h1>{game.name}</h1>
           <p>Admin page for game {game.id}</p>
+
+          <RoleSelect
+            roles={game.roles}
+            availableRoles={ALL_ROLES}
+            onChange={updateRoles}
+          />
 
           <button disabled={game.started} onClick={startGameHandler}>
             Start Game

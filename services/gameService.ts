@@ -1,18 +1,10 @@
 import { Game, IStorage, Player, Role } from "../types/domain";
-import { NewGameDTO } from "../types/dto";
-import {
-  President,
-  BlueCoy,
-  BlueSpy,
-  Bomber,
-  Doctor,
-  Engineer,
-  Gambler,
-  Mi6,
-  RedCoy,
-  RedSpy,
-} from "../types/roles";
+import { GameUpdateDTO, NewGameDTO } from "../types/dto";
 import { FileStorage } from "../repositories/fileStorage";
+import { BlueCoy, BlueSpy, Doctor, President } from "../roles/blueRoles";
+import { Bomber, Engineer, RedCoy, RedSpy } from "../roles/readRoles";
+import { Gambler, Mi6 } from "../roles/grayRoles";
+import { ALL_ROLES, isRole } from "../roles/roles";
 
 const storage: IStorage = new FileStorage();
 
@@ -38,6 +30,21 @@ export async function startGame(gameId: string): Promise<Game> {
     started: true,
   });
   return newGame;
+}
+
+export async function updateGame(
+  gameId: string,
+  data: GameUpdateDTO
+): Promise<Game> {
+  const game = await getGame(gameId);
+  return storage.updateGame({
+    ...game,
+    name: data.name ?? game.name,
+    roles:
+      data?.roleIds
+        ?.map((id) => ALL_ROLES.find((r) => r.id === id))
+        ?.filter(isRole) ?? game.roles,
+  });
 }
 
 export async function getPlayerRole(

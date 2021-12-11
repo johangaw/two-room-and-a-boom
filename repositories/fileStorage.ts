@@ -54,6 +54,6 @@ export class FileStorage implements IStorage {
       return Promise.reject(`Unable to find game with id: ${gameData.id}`);
 
     await this.store(newGames);
-    return Promise.resolve(game);
+    return game;
   }
 }

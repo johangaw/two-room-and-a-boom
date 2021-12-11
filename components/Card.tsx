@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Role, Team } from "../types/domain";
-import { isSpy } from "../types/roles";
+import { isSpy } from "../roles/roles";
 
 interface CardProps {
   role: Role;
