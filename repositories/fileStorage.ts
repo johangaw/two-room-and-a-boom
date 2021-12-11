@@ -20,6 +20,11 @@ export class FileStorage implements IStorage {
     return writeFile(this.path, JSON.stringify(games));
   }
 
+  async listGames(): Promise<Game[]> {
+    const games = await this.load();
+    return games ?? [];
+  }
+
   async getGame(gameId: string): Promise<Game | null> {
     const games = await this.load();
     return games.find((g) => g.id === gameId) ?? null;
