@@ -16,7 +16,7 @@ export default function transferPlayerRoleHandler(
       .catch((err) => {
         res
           .status(422)
-          .json({ message: `Unable to join game: ${err?.message ?? err}` });
+          .json({ message: `Unable transfer role: ${err?.message ?? err}` });
       });
   } else {
     res.status(404).json({ message: "Method not supported" });
