@@ -65,6 +65,7 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
     return (
       <CardPage
         role={role}
+        playerName={player?.name ?? ""}
         players={game?.players ?? []}
         playerSelected={transferRoleToPlayer}
       />
@@ -170,13 +171,17 @@ const ErrorPage: FC<{ message: string }> = ({ message }) => {
 
 const CardPage: FC<{
   role: Role;
+  playerName: string;
   players: Player[];
   playerSelected: (playerId: string) => void;
-}> = ({ role, players, playerSelected: playersSelected }) => {
+}> = ({ role, players, playerSelected: playersSelected, playerName }) => {
   return (
     <Overlay
       cover={
-        <SelectPlayer players={players} playerSelected={playersSelected} />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h1>{playerName}</h1>
+          <SelectPlayer players={players} playerSelected={playersSelected} />
+        </div>
       }
     >
       <Card role={role} />
