@@ -1,5 +1,5 @@
 import { Game, Role, Player } from "../types/domain";
-import { GameUpdateDTO, NewGameDTO } from "../types/dto";
+import { GameUpdateDTO, NewGameDTO, TransferPlayerRoleDTO } from "../types/dto";
 
 export const getGame = (gameId: string) => {
   return fetch(`/api/games/${gameId}`, {
@@ -77,6 +77,30 @@ export const createGame = async (game: NewGameDTO) => {
 
   if (res.ok) {
     return await res.json();
+  } else {
+    throw await res.text();
+  }
+};
+
+export const transferRole = async (
+  gameId: string,
+  fromPlayerId: string,
+  toPlayerId: string,
+  roleId: string
+) => {
+  const data: TransferPlayerRoleDTO = {
+    fromPlayerId,
+    toPlayerId,
+    roleId,
+  };
+  const res = await fetch(`/api/games/${gameId}/players/transferRole`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.ok) {
+    return (await res.json()) as void;
   } else {
     throw await res.text();
   }

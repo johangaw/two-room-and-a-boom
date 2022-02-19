@@ -10,3 +10,9 @@ export interface GameUpdateDTO {
   name?: string;
   roleIds?: string[];
 }
+
+export interface TransferPlayerRoleDTO {
+  fromPlayerId: string;
+  toPlayerId: string;
+  roleId: string;
+}

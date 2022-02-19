@@ -6,10 +6,15 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Loader } from "../../components/Loader";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
+import { SelectPlayer } from "../../components/SelectPlayer";
 import { useGame } from "../../components/useGame";
 import { usePlayerStorage } from "../../components/usePlayerStorage";
-import { getPlayerRole, joinGame } from "../../connections/gameApiConnections";
-import { Game, Role } from "../../types/domain";
+import {
+  getPlayerRole,
+  joinGame,
+  transferRole,
+} from "../../connections/gameApiConnections";
+import { Game, Player, Role } from "../../types/domain";
 
 interface Props {
   gameId: string;
@@ -27,6 +32,15 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
   } = useGame(gameId);
   const playerId = player?.id;
   const hasJoined = game?.players?.some((p) => p.id === player?.id);
+
+  const transferRoleToPlayer = (playerId: string) => {
+    transferRole(
+      game?.id ?? "",
+      player?.id ?? "",
+      playerId,
+      role?.id ?? ""
+    ).then(() => setRole(null));
+  };
 
   useEffect(() => {
     if (!game?.started || !playerId) return;
@@ -48,7 +62,13 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
   }
 
   if (role) {
-    return <CardPage role={role} />;
+    return (
+      <CardPage
+        role={role}
+        players={game?.players ?? []}
+        playerSelected={transferRoleToPlayer}
+      />
+    );
   }
 
   if (game && !hasJoined && player) {
@@ -73,14 +93,15 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
 
 export default GamePage;
 
-export const getServerSideProps: GetServerSideProps<Props, { gameId: string }> =
-  async ({ params }) => {
-    return {
-      props: {
-        gameId: params!!.gameId,
-      },
-    };
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  params,
+}) => {
+  return {
+    props: {
+      gameId: params?.gameId as string,
+    },
   };
+};
 
 const LoadingPage: FC = () => {
   return (
@@ -147,9 +168,17 @@ const ErrorPage: FC<{ message: string }> = ({ message }) => {
   );
 };
 
-const CardPage: FC<{ role: Role }> = ({ role }) => {
+const CardPage: FC<{
+  role: Role;
+  players: Player[];
+  playerSelected: (playerId: string) => void;
+}> = ({ role, players, playerSelected: playersSelected }) => {
   return (
-    <Overlay>
+    <Overlay
+      cover={
+        <SelectPlayer players={players} playerSelected={playersSelected} />
+      }
+    >
       <Card role={role} />
     </Overlay>
   );

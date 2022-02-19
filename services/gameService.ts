@@ -1,5 +1,5 @@
 import { Game, IStorage, Player, Role } from "../types/domain";
-import { GameUpdateDTO, NewGameDTO } from "../types/dto";
+import { GameUpdateDTO, NewGameDTO, TransferPlayerRoleDTO } from "../types/dto";
 import { FileStorage } from "../repositories/fileStorage";
 import { BlueCoy, BlueSpy, Doctor, President } from "../roles/blueRoles";
 import { Bomber, Engineer, RedCoy, RedSpy } from "../roles/readRoles";
@@ -39,7 +39,7 @@ export async function updateGame(
   const game = await getGame(gameId);
   return storage.updateGame({
     ...game,
-    name: data.name ?? game.name,
+    name: name ?? game.name,
     roles:
       data?.roleIds
         ?.map((id) => ALL_ROLES.find((r) => r.id === id))
@@ -105,6 +105,32 @@ export async function createGame(newGameData: NewGameDTO): Promise<Game> {
     ],
   });
   return game;
+}
+
+export async function transferPlayerRole(
+  gameId: string,
+  { fromPlayerId, roleId, toPlayerId }: TransferPlayerRoleDTO
+): Promise<void> {
+  const game = await getGame(gameId);
+  const playerIds = game.players.map((p) => p.id);
+
+  if (!playerIds.includes(fromPlayerId) || !playerIds.includes(toPlayerId))
+    throw new Error(
+      `both players (${fromPlayerId}, ${toPlayerId}) must be part of game ${gameId}`
+    );
+
+  const src = game.assignedRoles.find(
+    (ar) => ar[0] === fromPlayerId && ar[1].id === roleId
+  );
+
+  if (!src) throw new Error(`${fromPlayerId} does not have role ${roleId}`);
+
+  await storage.updateGame({
+    ...game,
+    assignedRoles: game.assignedRoles
+      .filter((ar) => ar != src)
+      .concat([toPlayerId, src[1]]),
+  });
 }
 
 function assignPlayerRoles(game: Game): Game["assignedRoles"] {
