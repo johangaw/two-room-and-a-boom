@@ -8,6 +8,7 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 import { Loader } from "../../components/Loader";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
+import { SelectRoleButton } from "../../components/SelectRoleButton";
 import { TransferRoleButton } from "../../components/TransferRoleButton";
 import { useGame } from "../../components/useGame";
 import { usePlayerStorage } from "../../components/usePlayerStorage";
@@ -172,8 +173,13 @@ const CardPage: FC<{
   return (
     <Overlay
       cover={
-        <Stack direction="column">
+        <Stack direction="column" spacing={2}>
           <Typography variant="h2">{player.name}</Typography>
+          <SelectRoleButton
+            role={role}
+            roles={playerRoles}
+            onChange={onRoleSelected}
+          />
           <TransferRoleButton
             players={playersInGame.filter((p) => p.id !== player.id)}
             roles={playerRoles}

@@ -17,10 +17,8 @@ export const SelectRole: FC<SelectRoleProps> = ({ role, roles, onChange }) => {
   return (
     <Stack>
       <FormControl>
-        <FormLabel id="select-role-group-label">Select Role</FormLabel>
         <RadioGroup
-          aria-labelledby="select-role-group-label"
-          value={role?.id}
+          value={role?.id ?? ""}
           onChange={(ev) =>
             onChange(roles.find((r) => r.id === ev.target.value)!)
           }
