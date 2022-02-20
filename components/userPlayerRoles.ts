@@ -4,19 +4,20 @@ import {
   getPlayerRoles,
 } from "../connections/gameApiConnections";
 import { Game, Role, Player } from "../types/domain";
+import { useActiveRoleStorage } from "./useActiveRoleStorage";
 
 export const usePlayerRoles = (game: Game | null, playerId: string) => {
   const [roles, setRoles] = useState<Role[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [activeRole, setActiveRole] = useState<Role | null>(null);
+  const { activeRoleId, rememberActiveRole } = useActiveRoleStorage();
 
   const transferRoleToPlayer = (toPlayer: Player, role: Role) => {
     transferRole(game?.id ?? "", playerId, toPlayer.id, role.id).then(() => {
       const newRoles = roles.filter((r) => r.id !== role.id);
       setRoles(newRoles);
-      if (activeRole === role) {
-        setActiveRole(newRoles[0] ?? null);
+      if (activeRoleId === role.id) {
+        rememberActiveRole(newRoles[0]?.id ?? null);
       }
     });
   };
@@ -28,13 +29,16 @@ export const usePlayerRoles = (game: Game | null, playerId: string) => {
     getPlayerRoles(game?.id ?? "", playerId)
       .then((roles) => {
         setRoles(roles);
-        setActiveRole(roles[0] ?? null);
+        const activeRole = roles.find((r) => r.id === activeRoleId);
+
+        if (!activeRole) rememberActiveRole(roles[0]?.id ?? null);
       })
       .catch((err) => {
         console.error(err);
         setError("No role has been assigned to this this player...");
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game?.started, game?.id, playerId]);
 
   return {
@@ -42,7 +46,7 @@ export const usePlayerRoles = (game: Game | null, playerId: string) => {
     error,
     loading,
     roles,
-    activeRole,
-    setActiveRole,
+    activeRole: roles.find((r) => r.id === activeRoleId) ?? null,
+    setActiveRole: (role: Role) => rememberActiveRole(role.id),
   };
 };
