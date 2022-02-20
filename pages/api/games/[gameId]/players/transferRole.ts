@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { transferPlayerRole } from "../../../../../services/gameService";
+import { Role } from "../../../../../types/domain";
 import { ErrorDTO, TransferPlayerRoleDTO } from "../../../../../types/dto";
 
 export default function transferPlayerRoleHandler(
   req: NextApiRequest,
-  res: NextApiResponse<void | ErrorDTO>
+  res: NextApiResponse<Role[] | ErrorDTO>
 ) {
   if (req.method === "POST") {
     const gameId = req.query.gameId as string;
@@ -12,7 +13,7 @@ export default function transferPlayerRoleHandler(
     // TODO validate player data...
 
     return transferPlayerRole(gameId, data)
-      .then(() => res.status(200).json())
+      .then((roles) => res.status(200).json(roles))
       .catch((err) => {
         res
           .status(422)

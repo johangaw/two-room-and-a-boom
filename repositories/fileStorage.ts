@@ -17,7 +17,7 @@ export class FileStorage implements IStorage {
   }
 
   private store(games: Game[]): Promise<void> {
-    return writeFile(this.path, JSON.stringify(games));
+    return writeFile(this.path, JSON.stringify(games, null, 2));
   }
 
   async listGames(): Promise<Game[]> {

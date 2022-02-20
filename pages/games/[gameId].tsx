@@ -1,19 +1,18 @@
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import type { GetServerSideProps, NextPage } from "next";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Card } from "../../components/Card";
 import { centerCenter, fullSize } from "../../components/css";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Loader } from "../../components/Loader";
 import { Overlay } from "../../components/Overlay";
 import { PageContainer } from "../../components/PageContainer";
-import { SelectPlayer } from "../../components/SelectPlayer";
+import { TransferRoleButton } from "../../components/TransferRoleButton";
 import { useGame } from "../../components/useGame";
 import { usePlayerStorage } from "../../components/usePlayerStorage";
-import {
-  getPlayerRole,
-  joinGame,
-  transferRole,
-} from "../../connections/gameApiConnections";
+import { usePlayerRoles } from "../../components/userPlayerRoles";
+import { joinGame } from "../../connections/gameApiConnections";
 import { Game, Player, Role } from "../../types/domain";
 
 interface Props {
@@ -21,8 +20,6 @@ interface Props {
 }
 
 const GamePage: NextPage<Props> = ({ gameId }) => {
-  const [error, setError] = useState("");
-  const [role, setRole] = useState<Role | null>(null);
   const { player, rememberPlayer } = usePlayerStorage();
   const {
     game,
@@ -30,28 +27,10 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
     error: loadingGameError,
     refresh: refreshGame,
   } = useGame(gameId);
-  const playerId = player?.id;
+  const playerId = player?.id ?? "";
   const hasJoined = game?.players?.some((p) => p.id === player?.id);
-
-  const transferRoleToPlayer = (playerId: string) => {
-    transferRole(
-      game?.id ?? "",
-      player?.id ?? "",
-      playerId,
-      role?.id ?? ""
-    ).then(() => setRole(null));
-  };
-
-  useEffect(() => {
-    if (!game?.started || !playerId) return;
-
-    getPlayerRole(gameId, playerId)
-      .then(setRole)
-      .catch((err) => {
-        console.error(err);
-        setError("No role has been assigned to this this player...");
-      });
-  }, [game?.started, gameId, playerId]);
+  const { roles, activeRole, setActiveRole, transferRoleToPlayer } =
+    usePlayerRoles(game, playerId);
 
   if (loadingGame) {
     return <LoadingPage />;
@@ -61,21 +40,18 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
     return <ErrorPage message={loadingGameError} />;
   }
 
-  if (role) {
-    return (
-      <CardPage
-        role={role}
-        playerName={player?.name ?? ""}
-        players={game?.players ?? []}
-        playerSelected={transferRoleToPlayer}
-      />
-    );
+  if (!hasJoined && game?.started) {
+    return <ErrorPage message="Unable to join a started game" />;
   }
 
-  if (game && !hasJoined && player) {
+  if (game && !game.started && hasJoined) {
+    return <LobbyPage game={game} />;
+  }
+
+  if (game && !game.started && !hasJoined && player) {
     return (
       <SetUsernamePage
-        initialName={player?.name || ""}
+        initialName={player.name}
         onSubmit={(name) => {
           const newPlayer = { ...player, name };
           rememberPlayer(newPlayer);
@@ -85,8 +61,17 @@ const GamePage: NextPage<Props> = ({ gameId }) => {
     );
   }
 
-  if (game && hasJoined) {
-    return <LobbyPage game={game} />;
+  if (game && game.started && player) {
+    return (
+      <CardPage
+        role={activeRole}
+        player={player}
+        playersInGame={game.players ?? []}
+        playerRoles={roles}
+        onRoleSelected={setActiveRole}
+        onRoleTransfer={transferRoleToPlayer}
+      />
+    );
   }
 
   return <ErrorPage message="Something went wrong" />;
@@ -170,18 +155,31 @@ const ErrorPage: FC<{ message: string }> = ({ message }) => {
 };
 
 const CardPage: FC<{
-  role: Role;
-  playerName: string;
-  players: Player[];
-  playerSelected: (playerId: string) => void;
-}> = ({ role, players, playerSelected: playersSelected, playerName }) => {
+  player: Player;
+  playersInGame: Player[];
+  playerRoles: Role[];
+  role: Role | null;
+  onRoleSelected: (role: Role) => void;
+  onRoleTransfer: (toPlayer: Player, role: Role) => void;
+}> = ({
+  playerRoles,
+  playersInGame,
+  player,
+  role,
+  onRoleSelected,
+  onRoleTransfer,
+}) => {
   return (
     <Overlay
       cover={
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <h1>{playerName}</h1>
-          <SelectPlayer players={players} playerSelected={playersSelected} />
-        </div>
+        <Stack direction="column">
+          <Typography variant="h2">{player.name}</Typography>
+          <TransferRoleButton
+            players={playersInGame.filter((p) => p.id !== player.id)}
+            roles={playerRoles}
+            onTransfer={(toPlayer, role) => onRoleTransfer(toPlayer, role)}
+          />
+        </Stack>
       }
     >
       <Card role={role} />

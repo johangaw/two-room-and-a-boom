@@ -3,7 +3,7 @@ export interface Game {
   readonly id: string;
   readonly players: Player[];
   readonly roles: Role[];
-  readonly assignedRoles: [string, Role][];
+  readonly assignedRoles: { playerId: string; role: Role }[];
   readonly started: boolean;
 }
 

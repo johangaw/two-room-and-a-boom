@@ -13,12 +13,12 @@ export const getGame = (gameId: string) => {
   });
 };
 
-export const getPlayerRole = (gameId: string, playerId: string) => {
-  return fetch(`/api/games/${gameId}/players/${playerId}/role`, {
+export const getPlayerRoles = (gameId: string, playerId: string) => {
+  return fetch(`/api/games/${gameId}/players/${playerId}/roles`, {
     headers: { "Content-Type": "application/json" },
   }).then(async (res) => {
     if (res.ok) {
-      return (await res.json()) as Role;
+      return (await res.json()) as Role[];
     } else {
       throw await res.text();
     }
@@ -100,7 +100,7 @@ export const transferRole = async (
   });
 
   if (res.ok) {
-    return (await res.json()) as void;
+    return (await res.json()) as Role[];
   } else {
     throw await res.text();
   }

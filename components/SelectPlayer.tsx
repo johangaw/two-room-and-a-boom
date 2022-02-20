@@ -1,26 +1,46 @@
-import { FC, useState } from "react";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Stack,
+} from "@mui/material";
+import { FC } from "react";
 import { Player } from "../types/domain";
 
 interface SelectPlayerProps {
+  player: Player | null;
   players: Player[];
-  playerSelected: (playerId: string) => void;
+  playerSelected: (player: Player) => void;
 }
 
 export const SelectPlayer: FC<SelectPlayerProps> = ({
+  player,
   players,
   playerSelected,
 }) => {
-  const [playerId, setPlayerId] = useState("");
   return (
-    <div>
-      <select value={playerId} onChange={(ev) => setPlayerId(ev.target.value)}>
-        {players.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={() => playerSelected(playerId)}>Give Card</button>
-    </div>
+    <Stack>
+      <FormControl>
+        <FormLabel id="select-player-group-label">Select Player</FormLabel>
+        <RadioGroup
+          aria-labelledby="select-player-group-label"
+          value={player?.id}
+          onChange={(ev) =>
+            playerSelected(players.find((p) => p.id === ev.target.value)!)
+          }
+        >
+          {players.map((p) => (
+            <FormControlLabel
+              key={p.id}
+              value={p.id}
+              control={<Radio />}
+              label={p.name}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+    </Stack>
   );
 };

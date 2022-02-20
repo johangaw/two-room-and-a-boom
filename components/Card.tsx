@@ -3,7 +3,7 @@ import { Role, Team } from "../types/domain";
 import { isSpy } from "../roles/roles";
 
 interface CardProps {
-  role: Role;
+  role: Role | null;
 }
 
 export const Card: FC<CardProps> = ({ role }) => {
@@ -22,16 +22,22 @@ export const Card: FC<CardProps> = ({ role }) => {
         color: "white",
       }}
     >
-      <h1>{role.name}</h1>
-      <p>{role.description}</p>
-      {role.notes?.map((n, i) => (
-        <p key={i}>NOTE: {n}</p>
-      ))}
+      {role && (
+        <>
+          <h1>{role.name}</h1>
+          <p>{role.description}</p>
+          {role.notes?.map((n, i) => (
+            <p key={i}>NOTE: {n}</p>
+          ))}
+        </>
+      )}
     </div>
   );
 };
 
-const getColor = (role: Role): string => {
+const getColor = (role: Role | null): string => {
+  if (!role) return "darkgray";
+
   const team = isSpy(role) ? invertTeam(role.team) : role.team;
   switch (team) {
     case "Blue":

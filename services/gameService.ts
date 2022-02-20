@@ -39,7 +39,7 @@ export async function updateGame(
   const game = await getGame(gameId);
   return storage.updateGame({
     ...game,
-    name: name ?? game.name,
+    name: data.name ?? game.name,
     roles:
       data?.roleIds
         ?.map((id) => ALL_ROLES.find((r) => r.id === id))
@@ -47,10 +47,10 @@ export async function updateGame(
   });
 }
 
-export async function getPlayerRole(
+export async function getPlayerRoles(
   gameId: string,
   playerId: string
-): Promise<Role> {
+): Promise<Role[]> {
   const game = await getGame(gameId);
   const player = game.players.find((p) => p.id === playerId);
   if (!player)
@@ -58,15 +58,9 @@ export async function getPlayerRole(
       `Player with id ${playerId} does not exists in game with id ${gameId}`
     );
 
-  const role = game.assignedRoles.find(
-    ([playerId, _]) => playerId === playerId
-  )?.[1];
-  if (!role)
-    throw new Error(
-      `Player with id ${playerId} has not been assigned any role yet`
-    );
-
-  return role;
+  return game.assignedRoles
+    .filter(({ playerId: id }) => id === playerId)
+    .map(({ role }) => role);
 }
 
 export async function joinGame(
@@ -110,7 +104,7 @@ export async function createGame(newGameData: NewGameDTO): Promise<Game> {
 export async function transferPlayerRole(
   gameId: string,
   { fromPlayerId, roleId, toPlayerId }: TransferPlayerRoleDTO
-): Promise<void> {
+): Promise<Role[]> {
   const game = await getGame(gameId);
   const playerIds = game.players.map((p) => p.id);
 
@@ -119,25 +113,30 @@ export async function transferPlayerRole(
       `both players (${fromPlayerId}, ${toPlayerId}) must be part of game ${gameId}`
     );
 
-  const src = game.assignedRoles.find(
-    (ar) => ar[0] === fromPlayerId && ar[1].id === roleId
+  const srcAssignment = game.assignedRoles.find(
+    ({ playerId, role }) => playerId === fromPlayerId && role.id === roleId
   );
 
-  if (!src) throw new Error(`${fromPlayerId} does not have role ${roleId}`);
+  if (!srcAssignment)
+    throw new Error(`${fromPlayerId} does not have role ${roleId}`);
+
+  const assignedRoles = game.assignedRoles
+    .filter((a) => a != srcAssignment)
+    .concat({ playerId: toPlayerId, role: srcAssignment.role });
 
   await storage.updateGame({
     ...game,
-    assignedRoles: game.assignedRoles
-      .filter((ar) => ar != src)
-      .concat([toPlayerId, src[1]]),
+    assignedRoles,
   });
+
+  return assignedRoles.map(({ role }) => role);
 }
 
 function assignPlayerRoles(game: Game): Game["assignedRoles"] {
   const shuffledRoles = shuffle(game.roles);
   return game.players
-    .map<[string, Role]>((p, i) => [p.id, shuffledRoles[i]])
-    .filter(([_, role]) => !!role);
+    .map((p, i) => ({ playerId: p.id, role: shuffledRoles[i] }))
+    .filter(({ role }) => !!role);
 }
 
 function shuffle<T>(list: T[]): T[] {
