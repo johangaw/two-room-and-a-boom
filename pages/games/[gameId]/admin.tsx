@@ -78,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const fileStorage = new FileStorage();
   return {
     fallback: "blocking",
-    paths: (await fileStorage.listGames()).map((g) => ({
+    paths: (await fileStorage.getGames()).map((g) => ({
       params: { gameId: g.id },
     })),
   };

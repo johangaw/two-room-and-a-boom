@@ -1,6 +1,18 @@
 import { Game, Role, Player } from "../types/domain";
 import { GameUpdateDTO, NewGameDTO, TransferPlayerRoleDTO } from "../types/dto";
 
+export const getGames = () => {
+  return fetch(`/api/games`, {
+    headers: { "Content-Type": "application/json" },
+  }).then(async (res) => {
+    if (res.ok) {
+      return res.json() as Promise<Game[]>;
+    } else {
+      throw await res.text();
+    }
+  });
+};
+
 export const getGame = (gameId: string) => {
   return fetch(`/api/games/${gameId}`, {
     headers: { "Content-Type": "application/json" },

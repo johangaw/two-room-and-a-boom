@@ -8,6 +8,10 @@ import { ALL_ROLES, isRole } from "../roles/roles";
 
 const storage: IStorage = new FileStorage();
 
+export async function getGames(): Promise<Game[]> {
+  return storage.getGames();
+}
+
 export async function getGame(gameId: string): Promise<Game> {
   const game = await storage.getGame(gameId);
   if (!game) throw new Error(`Game with id ${gameId} does not exists`);

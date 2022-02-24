@@ -23,6 +23,7 @@ export interface Role {
 }
 
 export interface IStorage {
+  getGames(): Promise<Game[]>;
   getGame(gameId: string): Promise<Game | null>;
   createGame(gameData: Omit<Game, "id">): Promise<Game>;
   updateGame(gameData: Game): Promise<Game>;
