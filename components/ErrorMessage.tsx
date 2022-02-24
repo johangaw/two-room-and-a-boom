@@ -1,3 +1,5 @@
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import { FC } from "react";
 
 interface ErrorProps {
@@ -6,9 +8,10 @@ interface ErrorProps {
 
 export const ErrorMessage: FC<ErrorProps> = ({ message }) => {
   return !!message ? (
-    <p role="alert" style={{ color: "red" }}>
+    <Alert severity="error">
+      <AlertTitle>Error</AlertTitle>
       {message}
-    </p>
+    </Alert>
   ) : null;
 };
 export default Error;
