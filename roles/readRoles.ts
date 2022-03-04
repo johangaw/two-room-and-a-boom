@@ -30,17 +30,6 @@ export const RedSpy: Role = {
   team: "Red",
 };
 
-export const RedCoy: Role = {
-  id: "red-coy",
-  name: "Coy",
-  description: `You begin with the "coy" condition. Players with the "coy" condition may ONLY color share even when a character's power might force a card share. A Coy can't card share, privately reveal, or publicly reveal their card or their color.`,
-  notes: [
-    `"Coy" players can card share their cards to Psychologists after a Psychologist player has privately revealed their card to the "coy" player.`,
-    `If a player with the "foolish" condition were to acquire the "coy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
-  ],
-  team: "Red",
-};
-
 export const RedAgent: Role = {
   id: "red-agent",
   name: "Agent",
@@ -707,6 +696,64 @@ export const RedTeam: Role = {
   ],
   team: "Red",
   tags: [],
+};
+
+export const RedSecretPolice: Role = {
+  id: "red-secret-police",
+  name: "Secret Police",
+  description: "",
+  notes: [
+    `You have an alternative win objective. While the Secret Police are in play, doing any action that could be deemed gameplay between rounds is strictly prohibited.`,
+    `If any players discuss gameplay or attempt to do any form of card sharing or revealing, you (the Secret Police) may point to the player that is gameplaying between rounds, publicly reveal your card (like its a badge) and yell, "Secret Police!`,
+    `You're under arrest!" As long as 1 other player in the game can verify that gameplay was indeed occurring between rounds, you win and all other players lose (including the opposing Secret Police character).`,
+    `Note: When playing with the Secret Police it is important that all players understand when a round begins and when it ends. If players are having difficulty understanding this, remember that declaring "The round is over!" is not considered gameplay.`,
+    `Another Note: Between rounds is the time between the end of a round and the beginning of the next round. This is the time when leaders parlay, swap hostages, and begin the next round.`,
+    `Yet another Note: Tip: The easiest way to be sure that the Secret Police do not win is to remain silent and still between rounds.`,
+    `Warning: A leader selecting hostages after a round's time has expired IS CONSIDERED GAMEPLAY! Leader's should be well prepared.`,
+  ],
+  team: "Red",
+  tags: [],
+};
+
+export const RedSecurity: Role = {
+  id: "red-security",
+  name: "Security",
+  description: "",
+  notes: [
+    `You have the TACKLE power: you may publicly reveal your Security card, pick any player in the room (besides yourself) and verbally tell them, "You're going nowhere". However, your card must permanently remain publicly revealed for the rest of the game.`,
+    `This means that you can only use this power once. If the target of your TACKLE power is not on the same team as you, they gain the "tackled" condition. "Tackled" players can't leave as a hostage this round.`,
+    `If Security uses the TACKLE power on a member of their own team, then that teammate player gains the "torn" condition. A player with the "torn" condition must permanently publicly reveal their card regardless of any powers or acquired conditions. This permanent public reveal is a punishment for choosing a member of the same team.`,
+    `Note: If a player with the "tackled" condition were to acquire the "blasted" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["TACKLE"],
+};
+
+export const RedSeer: Role = {
+  id: "red-seer",
+  name: "Seer",
+  description: "",
+  notes: [
+    `Before the game begins, but after character cards have been dealt, everyone is to close their eyes and publicly reveal their cards for about 30 seconds. All players are to do this regardless of their character card's abilities, powers, and starting conditions.`,
+    `Only the Seer characters may open their eyes and move freely throughout the play areas. Seer characters begin the game with the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
+    `Note: "Shy" players can card share their cards to psychologists after a psychologist player has privately revealed their card to the "shy" player. Another Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+    `Tip: the best way to address Seer players getting to look at all players' cards is to have all players dealt their character cards before separating into the 2 separate rooms. Then have the 30 second mass public reveal, and then separate into separate rooms.`,
+  ],
+  team: "Red",
+  tags: [],
+};
+
+export const RedShyGuy: Role = {
+  id: "red-shy-guy",
+  name: "Shy Guy",
+  description: "",
+  notes: [
+    `You begin with the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
+    `Note: "Shy" players can card share their cards to psychologists after a psychologist player has privately revealed their card to the "shy" player.`,
+    `Another Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["shy"],
 };
 
 export const Red: Role = {
