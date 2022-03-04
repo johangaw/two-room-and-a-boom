@@ -574,6 +574,55 @@ export const RedNinja: Role = {
   tags: ["NINJA"],
 };
 
+export const RedPaparazzo: Role = {
+  id: "red-paparazzo",
+  name: "Paparazzo",
+  description: "",
+  notes: [
+    `Do your best to make sure there are no private conversations. You must try to be as intrusive as possible, including looking over players' shoulders at their cards, and even getting on the ground to see the bottoms of cards being passed between players.`,
+    `You can't physically manipulate other players, that is too rude. If playing with the Privacy Promise rule variant, ignore the rule as long as you publicly reveal your card to prove to others that you are permitted to be invasive.`,
+  ],
+  team: "Red",
+  tags: [],
+};
+
+export const RedParanoid: Role = {
+  id: "red-paranoid",
+  name: "Paranoid",
+  description: "",
+  notes: [
+    `You begin with the "paranoid" condition. Players with the "paranoid" condition may only card share. Moreover, they may only card share once per game.`,
+  ],
+  team: "Red",
+  tags: ["paranoid", "once-per-game"],
+};
+
+export const RedPiper: Role = {
+  id: "red-piper",
+  name: "Piper",
+  description: "",
+  notes: [
+    `You have the PIPER power: any player that card shares with you gains the "piped" condition. Characters with the "piped" condition have an additional win condition. If players with the "piped" condition lose if they are not in the same room as the Piper player that provided them with the "piped" condition.`,
+    `Note: a player can only have a single "piped" condition.`,
+    `Another Note: it is possible that both Piper characters gain the "piped" condition.`,
+  ],
+  team: "Red",
+  tags: ["PIPER", "piped"],
+};
+
+export const RedPirate: Role = {
+  id: "red-pirate",
+  name: "Pirate",
+  description: "",
+  notes: [
+    `You have the PIRATE power: you may publicly reveal your Pirate card, pick any player in the room (besides yourself) and verbally and loudly tell them, "Argh, walk the plank". However, your card must permanently remain publicly revealed for the rest of the game.`,
+    `This means that you can only use this power once. Your target player gains the "blasted" condition. A player with the "blasted" condition must be one of the hostages exchanged at the end of the round.`,
+    `If the PIRATE power is used during the last round, then that player is the single hostage. Note: If a player with the "blasted" condition were to acquire the "tackled" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["PIRATE", "public-reveal", "once-per-game", "blasted"],
+};
+
 export const Red: Role = {
   id: "red-",
   name: "",

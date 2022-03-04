@@ -504,6 +504,78 @@ export const BlueNinja: Role = {
   tags: ["NINJA"],
 };
 
+export const BlueNurse: Role = {
+  id: "blue-nurse",
+  name: "Nurse",
+  description: "",
+  notes: [
+    `You are the backup character for the Doctor.`,
+    `If the Doctor card is buried or the Doctor receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Doctor (card sharing with the President).`,
+  ],
+  team: "Blue",
+  tags: ["group-president", "backup"],
+};
+
+export const BlueOneArmedMan: Role = {
+  id: "blue-one-armed-man",
+  name: "One-armed Man",
+  description: "",
+  notes: [
+    `If you card share with the Witness, the game immediately ends. Blue Team wins.`,
+  ],
+  team: "Blue",
+  tags: ["group-marshal"],
+};
+
+export const BluePaparazzo: Role = {
+  id: "blue-paparazzo",
+  name: "Paparazzo",
+  description: "",
+  notes: [
+    `Do your best to make sure there are no private conversations. You must try to be as intrusive as possible, including looking over players' shoulders at their cards, and even getting on the ground to see the bottoms of cards being passed between players.`,
+    `You can't physically manipulate other players, that is too rude. If playing with the Privacy Promise rule variant, ignore the rule as long as you publicly reveal your card to prove to others that you are permitted to be invasive.`,
+  ],
+  team: "Blue",
+  tags: [],
+};
+
+export const BlueParanoid: Role = {
+  id: "blue-paranoid",
+  name: "Paranoid",
+  description: "",
+  notes: [
+    `You begin with the "paranoid" condition. Players with the "paranoid" condition may only card share. Moreover, they may only card share once per game.`,
+  ],
+  team: "Blue",
+  tags: ["paranoid", "once-per-game"],
+};
+
+export const BluePiper: Role = {
+  id: "blue-piper",
+  name: "Piper",
+  description: "",
+  notes: [
+    `You have the PIPER power: any player that card shares with you gains the "piped" condition. Characters with the "piped" condition have an additional win condition. If players with the "piped" condition lose if they are not in the same room as the Piper player that provided them with the "piped" condition.`,
+    `Note: a player can only have a single "piped" condition.`,
+    `Another Note: it is possible that both Piper characters gain the "piped" condition.`,
+  ],
+  team: "Blue",
+  tags: ["PIPER", "piped"],
+};
+
+export const BluePirate: Role = {
+  id: "blue-pirate",
+  name: "Pirate",
+  description: "",
+  notes: [
+    `You have the PIRATE power: you may publicly reveal your Pirate card, pick any player in the room (besides yourself) and verbally and loudly tell them, "Argh, walk the plank". However, your card must permanently remain publicly revealed for the rest of the game.`,
+    `This means that you can only use this power once. Your target player gains the "blasted" condition. A player with the "blasted" condition must be one of the hostages exchanged at the end of the round.`,
+    `If the PIRATE power is used during the last round, then that player is the single hostage. Note: If a player with the "blasted" condition were to acquire the "tackled" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Blue",
+  tags: ["PIRATE", "public-reveal", "once-per-game", "blasted"],
+};
+
 export const Blue: Role = {
   id: "blue-",
   name: "",
