@@ -214,3 +214,40 @@ export const RedCriminal: Role = {
   team: "Red",
   tags: ["CRIMINAL", "shy"],
 };
+
+export const RedCupid: Role = {
+  id: "red-cupid",
+  name: "Cupid",
+  description: "",
+  notes: [
+    `You have the CUPID power: once per game, you may privately reveal your card to two players. You must verbally say to your target players, "You are in love with each other".`,
+    `Those two players gain the "in love" condition. Players with the "in love" condition replace their original win objective with the following win objective: be in the same room with the player with whom you are "in love" at the end of the game or fail to win your objective. The CUPID power cannot be used on yourself.`,
+    `Note: If a player with the "in love" condition were to acquire the "in hate" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["CUPID", "once-per-game", "in love"],
+};
+
+export const RedDealer: Role = {
+  id: "red-dealer",
+  name: "Dealer",
+  description: "",
+  notes: [
+    `You have the DEALER power: any player that card shares with you gains the "foolish" condition. Players with the "foolish" condition can never turn down an offer to card share.`,
+    `Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["DEALER", "foolish", "card-share"],
+};
+
+export const RedDemon: Role = {
+  id: "red-demon",
+  name: "Demon",
+  description: "",
+  notes: [
+    `You begin with the "liar" condition. Players with the "liar" condition must always verbally tell the lie (unless you're "seduced", "hypnotized", or any other condition that may influence your ability to tell the truth). This means that you are permitted to communicate the truth as long as it is not verbally.`,
+    `Note: If a player with the "honest" condition were to acquire the "liar" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["liar"],
+};

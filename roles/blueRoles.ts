@@ -213,3 +213,27 @@ export const BlueCriminal: Role = {
   team: "Blue",
   tags: ["CRIMINAL", "shy"],
 };
+
+export const BlueDealer: Role = {
+  id: "blue-dealer",
+  name: "Dealer",
+  description: "",
+  notes: [
+    `You have the DEALER power: any player that card shares with you gains the "foolish" condition. Players with the "foolish" condition can never turn down an offer to card share.`,
+    `Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Blue",
+  tags: ["DEALER", "foolish", "card-share"],
+};
+
+export const BlueDemon: Role = {
+  id: "blue-demon",
+  name: "Demon",
+  description: "",
+  notes: [
+    `You begin with the "liar" condition. Players with the "liar" condition must always verbally tell the lie (unless you're "seduced", "hypnotized", or any other condition that may influence your ability to tell the truth). This means that you are permitted to communicate the truth as long as it is not verbally.`,
+    `Note: If a player with the "honest" condition were to acquire the "liar" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Blue",
+  tags: ["liar"],
+};
