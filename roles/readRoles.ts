@@ -756,6 +756,18 @@ export const RedShyGuy: Role = {
   tags: ["shy"],
 };
 
+export const RedSocialist: Role = {
+  id: "red-socialist",
+  name: "Socialist",
+  description: "",
+  notes: [
+    `Any player that card shares with you must trade in their character card for a Red Team card before the beginning of the next round and before revealing any part of their card to another player.`,
+    `Your power has no effect on primary characters (President, Bomber, Red Fist, etc)., backup characters for primaries (President's Daughter, Martyr, Firecracker, etc). or any character that is not aligned with either red or blue.`,
+  ],
+  team: "Red",
+  tags: ["not-implemented"],
+};
+
 export const Red: Role = {
   id: "red-",
   name: "",
