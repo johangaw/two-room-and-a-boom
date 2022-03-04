@@ -20,6 +20,7 @@ export interface Role {
   readonly description: string;
   readonly notes?: string[];
   readonly team: Team;
+  readonly tags?: string[];
 }
 
 export interface IStorage {
