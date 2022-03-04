@@ -363,7 +363,7 @@ export const RedFugitive: Role = {
     `If you card share with the One-Armed Man, the game immediately ends. Red Team wins.`,
   ],
   team: "Red",
-  tags: ["group-one-armed-man"],
+  tags: ["group-marshal"],
 };
 
 export const RedGargoyle: Role = {
@@ -479,6 +479,28 @@ export const RedKangaroo: Role = {
   ],
   team: "Red",
   tags: ["SWITCH-A-ROO", "public-reveal"],
+};
+
+export const RedLoyalist: Role = {
+  id: "red-loyalist",
+  name: "Loyalist",
+  description: "",
+  notes: [
+    `You are immune to the "traitor" condition. Moreover, if anyone card shares with you they lose the "traitor" condition.`,
+  ],
+  team: "Red",
+  tags: ["traitor"],
+};
+
+export const RedMadScientist: Role = {
+  id: "red-mad-scientist",
+  name: "Mad Scientist",
+  description: "",
+  notes: [
+    `You have the MAD SCIENTIST power: once per game, you may privately reveal your card to two players. You must verbally say to your target players, "You MUST trade cards". Those two players must trade character cards. You can not use this power on yourself, but another Mad Scientist can use their MAD SCIENTIST power on you.`,
+  ],
+  team: "Red",
+  tags: ["MAD SCIENTIST", "private-reveal"],
 };
 
 export const Red: Role = {

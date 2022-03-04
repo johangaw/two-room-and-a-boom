@@ -389,6 +389,50 @@ export const BlueKangaroo: Role = {
   tags: ["SWITCH-A-ROO", "public-reveal"],
 };
 
+export const BlueKing: Role = {
+  id: "blue-king",
+  name: "King",
+  description: "",
+  notes: [
+    `You are a primary character. Blue Team wins if you do not gain the "toast" condition.`,
+  ],
+  team: "Blue",
+  tags: ["toast", "group-king", "primary"],
+};
+
+export const BlueLoyalist: Role = {
+  id: "blue-loyalist",
+  name: "Loyalist",
+  description: "",
+  notes: [
+    `You are immune to the "traitor" condition. Moreover, if anyone card shares with you they lose the "traitor" condition.`,
+  ],
+  team: "Blue",
+  tags: ["traitor"],
+};
+
+export const BlueMadScientist: Role = {
+  id: "blue-mad-scientist",
+  name: "Mad Scientist",
+  description: "",
+  notes: [
+    `You have the MAD SCIENTIST power: once per game, you may privately reveal your card to two players. You must verbally say to your target players, "You MUST trade cards". Those two players must trade character cards. You can not use this power on yourself, but another Mad Scientist can use their MAD SCIENTIST power on you.`,
+  ],
+  team: "Blue",
+  tags: ["MAD SCIENTIST", "private-reveal"],
+};
+
+export const BlueMarshal: Role = {
+  id: "blue-marshal",
+  name: "Marshal",
+  description: "",
+  notes: [
+    `If you card share with the Fugitive, the game immediately ends. Blue Team wins.`,
+  ],
+  team: "Blue",
+  tags: ["group-marshal"],
+};
+
 export const Blue: Role = {
   id: "blue-",
   name: "",
