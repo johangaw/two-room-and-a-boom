@@ -675,6 +675,40 @@ export const RedRat: Role = {
   tags: ["RAT", "public-reveal"],
 };
 
+export const RedFist: Role = {
+  id: "red-fist",
+  name: "Red Fist",
+  description: "",
+  notes: [
+    `You are a primary character. The Red Team wins if you are not in the same room as the Blue Drone at the end of the game.`,
+  ],
+  team: "Red",
+  tags: ["group-drone", "primary"],
+};
+
+export const RedFoot: Role = {
+  id: "red-foot",
+  name: "Red Foot",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the Red Fist. If the Red Fist card is buried or the Red Fist receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the Red Fist.`,
+  ],
+  team: "Red",
+  tags: ["group-drone", "secondary", "backup"],
+};
+
+export const RedTeam: Role = {
+  id: "red-team",
+  name: "Red Team",
+  description: "",
+  notes: [
+    `You are on Red Team, if the President gains the "dead" condition, you win.`,
+    `Note: any character card that has the white bomb icon on it is considered to be on the Red Team.`,
+  ],
+  team: "Red",
+  tags: [],
+};
+
 export const Red: Role = {
   id: "red-",
   name: "",
