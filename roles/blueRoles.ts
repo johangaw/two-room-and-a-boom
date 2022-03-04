@@ -296,3 +296,104 @@ export const BlueFirefighter: Role = {
   team: "Blue",
   tags: ["FIREFIGHTER", "fireproof", "firebomb", "group-president"],
 };
+
+export const BlueHunter: Role = {
+  id: "blue-hunter",
+  name: "Hunter",
+  description: "",
+  notes: [
+    `Take a player's character card anytime they attempt to use a card share power on you. You, the Hunter, are not affected by that player's card share power. You are not permitted to do anything with acquired cards, including showing the cards to others or using powers associated with the card.`,
+    `For example, if a Vampire card shares with you, the Vampire has no effect on you, but you get to keep the player's Vampire card. If 2 Hunters card share, nothing happens. Players whose cards were stolen maintain their powers and allegiance, but have obviously lost all ability to share their cards with others.`,
+    `Note: the Clone's CLONE power still works even when encountering the Hunter.`,
+  ],
+  team: "Blue",
+  tags: ["card-share"],
+};
+
+export const BlueHypnotist: Role = {
+  id: "blue-hypnotist",
+  name: "Hypnotist",
+  description: "",
+  notes: [
+    `You have the HYPNOTIST power: any player that card shares with you gains the "HYPNOTIST" condition. "Hypnotized" players must act as if they are the character that you suggest. You initiate hypnotism by saying, "You think you are the ________". You can only make a character suggestion at the time of the hypnotism (the card share). "Hypnotized" players do not gain nor lose their power or allegiance.`,
+    `Note: this requires a bit of acting on the part of the "hypnotized" player as they are now to believe that their character card is actually the character card the Hypnotist suggests.`,
+  ],
+  team: "Blue",
+  tags: ["HYPNOTIST", "hypnotized", "card-share"],
+};
+
+export const BlueIdentityThief: Role = {
+  id: "blue-identity-thief",
+  name: "Identity Thief",
+  description: "",
+  notes: [
+    `Any player that card shares with you trades cards with you and then acquires the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
+    `The player with whom you traded cards is now considered the "Shy Identity Thief" and assumes the allegiance of the Identity Thief card. You, however, assume the powers, allegiance, win objectives, and all starting conditions of the newly stolen card as if you were dealt that character card at the beginning of the game.`,
+    `If the 2 Identity Thief characters card share with one another, they trade cards, both gain the "shy" condition, and both trade their allegiances (red becomes blue and blue become red).`,
+    `Note: "Shy" players can card share their cards to psychologists after a psychologist player has privately revealed their card to the "shy" player.`,
+    `Another Note: If a player with the "shy" condition were to acquire the "foolish" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Blue",
+  tags: ["shy", "card-share"],
+};
+
+export const BlueImmunologist: Role = {
+  id: "blue-immunologist",
+  name: "Immunologist",
+  description: "",
+  notes: [
+    `You begin with the "immune" condition. Players with the "immune" condition are immune to all powers and conditions without exception.`,
+    `Note: players should never lie about having the "immune" condition. If this becomes a problem an Immunologist might have to provide a private reveal to prove that they are indeed immune to a power or condition and you should get better friends.`,
+  ],
+  team: "Blue",
+  tags: ["immune"],
+};
+
+export const BlueInformer: Role = {
+  id: "blue-informer",
+  name: "Informer",
+  description: "",
+  notes: [
+    `When a player of the opposing color (i.e. red when you're blue, or blue when you're on red team) privately reveals their card to you and verbally says, "Take my card", you MUST take that player's card.`,
+    `You are not permitted to do anything with acquired cards, including showing the cards to others or using powers associated with the card. If, at the end of the last round, if the red and blue teams tie (both win or both lose) then team whose Informer has more cards loses.`,
+    `For example: Both the Red Fist and the President are destroyed by the Blue Drone and the Bomber. The red Informer acquired 3 cards during the game. The blue Informer acquired 2 cards during the game. Red Team loses, Blue Team wins.`,
+  ],
+  team: "Blue",
+  tags: [],
+};
+
+export const BlueInterrogator: Role = {
+  id: "blue-interrogator",
+  name: "Interrogator",
+  description: "",
+  notes: [
+    `You have the INTERROGATE power: once per round you may privately reveal to any player in the room and ask them a single yes/no question to which they must answer honestly. If they sincerely don't know the answer to the question, then they should indicate such.`,
+    `Answering doesn't have to be verbal (though it can be). The recipient of the INTERROGATE power can answer with a simple nod of the head, headshake, or shrug of the shoulders.`,
+    `When using the Interrogate ability, you must verbally announce to your target player, "I am using my Interrogate ability", as you privately reveal your card to them.`,
+    `Note: asking players about what they plan to do in the future is a waste of a question. Changing your plans doesn't make you dishonest. It makes you fickle.`,
+  ],
+  team: "Blue",
+  tags: ["INTERROGATE"],
+};
+
+export const BlueKangaroo: Role = {
+  id: "blue-kangaroo",
+  name: "Kangaroo",
+  description: "",
+  notes: [
+    `You have the SWITCH-A-ROO power: during any round but the last, you may publicly reveal your card. You must then immediately leave your current room. Upon entering the opposing room, you must IMMEDIATELY choose any player, show them your publicly revealed card and verbally tell them, "I'm kicking you out".`,
+    `You stay, but your target player must immediately leave the current room and go into the opposing room. After using the SWITCH-A-ROO power, your card must remain permanently publicly revealed for the rest of the game.`,
+    `This means that you can only use this power once. If the player you chose to remove from the room was the leader, the leader should immediately place the leader card on the ground. At this point, a new leader is nominated in the same method as in the first round.`,
+  ],
+  team: "Blue",
+  tags: ["SWITCH-A-ROO", "public-reveal"],
+};
+
+export const Blue: Role = {
+  id: "blue-",
+  name: "",
+  description: "",
+  notes: [],
+  team: "Blue",
+  tags: [],
+};
