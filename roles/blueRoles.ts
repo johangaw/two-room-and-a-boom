@@ -610,6 +610,17 @@ export const BluePsychologist: Role = {
   tags: ["shy", "coy", "paranoid"],
 };
 
+export const BluePyrotech: Role = {
+  id: "blue-pyrotech",
+  name: "Pyrotech",
+  description: "",
+  notes: [
+    `You have the PYROTECH power: card sharing with the Bomber provides the "firebomb" condition. If the Bomber has the "firebomb" condition at the end of the game, all players gain the "dead" condition (regardless of what room they are in).`,
+  ],
+  team: "Blue",
+  tags: ["PYROTECH", "firebomb", "card-share", "group-president"],
+};
+
 export const Blue: Role = {
   id: "blue-",
   name: "",
