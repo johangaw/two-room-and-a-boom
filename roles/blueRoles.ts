@@ -576,6 +576,40 @@ export const BluePirate: Role = {
   tags: ["PIRATE", "public-reveal", "once-per-game", "blasted"],
 };
 
+export const BluePresidentsDaughter: Role = {
+  id: "blue-presidents-daughter",
+  name: "President's Daughter",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the President. If the President card is buried or the President receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the President (for example: ending the game in the opposite room as the Bomber, card sharing with the Doctor).`,
+  ],
+  team: "Blue",
+  tags: ["group-president", "backup", "secondary"],
+};
+
+export const BlueProfessor: Role = {
+  id: "blue-professor",
+  name: "Professor",
+  description: "",
+  notes: [
+    `Any player that card shares with you acquires the "savvy" condition. Players with the "savvy" condition may only card share. The "savvy" condition prevents the use of private reveal and color share powers.`,
+    `Note: it is possible for "savvy" players to acquire conditions that prevent card sharing (e.g. "coy"). If this happens, then the "savvy" player can no longer perform any of the 4 types of reveals (card share, color share, private reveal, or public reveal).`,
+  ],
+  team: "Blue",
+  tags: ["card-share", "savvy"],
+};
+
+export const BluePsychologist: Role = {
+  id: "blue-psychologist",
+  name: "Psychologist",
+  description: "",
+  notes: [
+    `When you privately reveal your card to a character with the "shy" condition or the "coy" condition, that "shy" or "coy" character may then immediately card share with you, the Psychologist. If this is done, the "shy" and/or "coy" condition is removed. Furthermore, if someone with the "paranoid" condition card shares with you, the "paranoid" condition is removed.`,
+  ],
+  team: "Blue",
+  tags: ["shy", "coy", "paranoid"],
+};
+
 export const Blue: Role = {
   id: "blue-",
   name: "",

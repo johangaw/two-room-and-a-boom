@@ -623,6 +623,29 @@ export const RedPirate: Role = {
   tags: ["PIRATE", "public-reveal", "once-per-game", "blasted"],
 };
 
+export const RedProfessor: Role = {
+  id: "red-professor",
+  name: "Professor",
+  description: "",
+  notes: [
+    `Any player that card shares with you acquires the "savvy" condition. Players with the "savvy" condition may only card share. The "savvy" condition prevents the use of private reveal and color share powers.`,
+    `Note: it is possible for "savvy" players to acquire conditions that prevent card sharing (e.g. "coy"). If this happens, then the "savvy" player can no longer perform any of the 4 types of reveals (card share, color share, private reveal, or public reveal).`,
+  ],
+  team: "Red",
+  tags: ["card-share", "savvy"],
+};
+
+export const RedPsychologist: Role = {
+  id: "red-psychologist",
+  name: "Psychologist",
+  description: "",
+  notes: [
+    `When you privately reveal your card to a character with the "shy" condition or the "coy" condition, that "shy" or "coy" character may then immediately card share with you, the Psychologist. If this is done, the "shy" and/or "coy" condition is removed. Furthermore, if someone with the "paranoid" condition card shares with you, the "paranoid" condition is removed.`,
+  ],
+  team: "Red",
+  tags: ["shy", "coy", "paranoid"],
+};
+
 export const Red: Role = {
   id: "red-",
   name: "",
