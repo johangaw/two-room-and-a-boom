@@ -621,6 +621,35 @@ export const BluePyrotech: Role = {
   tags: ["PYROTECH", "firebomb", "card-share", "group-president"],
 };
 
+export const BlueRageaholic: Role = {
+  id: "blue-rageaholic",
+  name: "Rageaholic",
+  description: "",
+  notes: [
+    `You have an alternative win objective. If you...`,
+    `* are a room's leader`,
+    `* have already selected your hostages`,
+    `* are between rounds (the time between the end of a round and the beginning of the next round)`,
+    `* and are waiting for the other room's leader during parlay … then you may begin yelling "I'm a raging one! I'm a raging two! I'm a raging three!..". and so on until either the other leader shows up for parlay or you get to "I'm a raging ten!" If you get to and complete yelling "I'm a raging ten!" then you win and all other players lose (including the opposing Rageaholic character).`,
+    `Note: when yelling during parlay, you should be loud enough that both rooms can hear you.`,
+  ],
+  team: "Blue",
+  tags: [],
+};
+
+export const BlueRat: Role = {
+  id: "blue-rat",
+  name: "Rat",
+  description: "",
+  notes: [
+    `You have the RAT power: once per game you may publicly reveal your card to the entire room, then leave to the opposing room. However, your card must permanently remain publicly revealed for the rest of the game. While in the other room, you have the "immune" condition.`,
+    `Players with the "immune" condition are immune to all powers and conditions without exception. While in the other room Rats can never take part in any vote (e.g. voting to nominate or usurp a leader) and can never be picked by leaders to be transferred into another room (or by other characters with such powers) as they are never actually counted as part of a room's population.`,
+    `You must return to your original room before the end of the round or you automatically lose.`,
+  ],
+  team: "Blue",
+  tags: ["RAT", "public-reveal"],
+};
+
 export const Blue: Role = {
   id: "blue-",
   name: "",
