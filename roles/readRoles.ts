@@ -9,7 +9,7 @@ export const Bomber: Role = {
     'It is possible that the Bomber receives the "dead" condition before the end of the game. If this happens, then the Bomber does not detonate, failing to provide the "dead" condition to everyone in the same room at the end of the game.',
   ],
   team: "Red",
-  tags: ["group1", "primary"],
+  tags: ["group-president", "primary"],
 };
 export const Engineer: Role = {
   id: "red-engineer",
@@ -20,7 +20,7 @@ export const Engineer: Role = {
     "Remember that if the Bomber character ever switches player control (perhaps due to the Hot Potato), then the new Bomber must card share with the Engineer.",
   ],
   team: "Red",
-  tags: ["group1"],
+  tags: ["group-president"],
 };
 
 export const RedSpy: Role = {
@@ -225,7 +225,7 @@ export const RedCupid: Role = {
     `Note: If a player with the "in love" condition were to acquire the "in hate" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
   ],
   team: "Red",
-  tags: ["CUPID", "once-per-game", "in love"],
+  tags: ["CUPID", "once-per-game", "in love", "lover-haters"],
 };
 
 export const RedDealer: Role = {
@@ -250,4 +250,141 @@ export const RedDemon: Role = {
   ],
   team: "Red",
   tags: ["liar"],
+};
+
+export const RedDragon: Role = {
+  id: "red-dragon",
+  name: "Dragon",
+  description: "",
+  notes: [
+    `You are a primary character. Everyone in the same room as you at the end of the game gains the "toast" condition. The Red Team wins if the King gains the "dead" condition.`,
+    `Note: it is possible that the Dragon receives the "dead" condition before the end of the game. If this happens, then the Dragon does not breathe , failing to provide the "dead" condition to everyone in the same room at the end of the game.`,
+  ],
+  team: "Red",
+  tags: ["group-king", "primary"],
+};
+export const RedDragonEgg: Role = {
+  id: "red-dragon-egg",
+  name: "Dragon Egg",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the Dragon. If the Dragon card is buried or the Dragon receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the Dragon (for example: ending the game in the same room as the King, card sharing with the Eggineer).`,
+  ],
+  team: "Red",
+  tags: ["group-king", "secondary"],
+};
+
+export const RedDrBoom: Role = {
+  id: "red-dr-boom",
+  name: "Dr. Boom",
+  description: "",
+  notes: [
+    `You have the BOOM power: if you card share with the President, the game immediately ends. Red Team wins.`,
+    `Note: the BOOM power never works on the President's Daughter. If the President is buried, the BOOM power is never used.`,
+  ],
+  team: "Red",
+  tags: ["group-president"],
+};
+
+export const RedEggineer: Role = {
+  id: "red-eggineer",
+  name: "Eggineer",
+  description: "",
+  notes: [
+    `When playing with the Eggineer, the Red Team has the following additional win condition: the Dragon must card share with the Eggineer before the end of the game or the Red Team loses.`,
+    `At the end of the game, the Dragon will be asked if he/she card shared with the Eggineer. At that time both players will verify or deny having card shared.`,
+    `Note: remember that if the Dragon character ever switches player control (perhaps due to the Hot Potato), then the new Dragon must card share with the Eggineer.`,
+  ],
+  team: "Red",
+  tags: ["group-king"],
+};
+
+export const RedEnforcer: Role = {
+  id: "red-enforcer",
+  name: "Enforcer",
+  description: "",
+  notes: [
+    `You have the ENFORCER power: once per round, you may privately reveal your card to two players. You must verbally say to your target players, "You must reveal your card to one another". Those two players must card share to one another (not to you). You cannot use this power on yourself, but another Enforcer can use their power on you.`,
+    `Note: If used on a character that is unable to card share (e.g. has the "shy" condition), the power is wasted. The target must prove they can't card share by verbally saying (even if "cursed") "I can't because I am (name specific condition)".`,
+  ],
+  team: "Red",
+  tags: ["ENFORCER", "once-per-round", "private-reveal"],
+};
+
+export const RedEnlisted: Role = {
+  id: "red-enlisted",
+  name: "Enlisted",
+  description: "",
+  notes: [
+    `You have the ENLIST power: during any round but the last, you may publicly reveal your card and automatically become one of the hostages for the end of that round. However, your card must permanently remain publicly revealed for the rest of the game. This means that you can only use this power once.`,
+    `The Enlisted must be a hostage during the same round in which the ENLIST power was used. If 2 Enlisted characters use their power in the same room during the same round and there is only 1 hostage position available, whichever Enlisted used their power first is to be the hostage, the other Enlisted character wasted their ENLIST power.`,
+  ],
+  team: "Red",
+  tags: ["ENLIST", "public-reveal", "once-per-game"],
+};
+
+export const RedExhibitionist: Role = {
+  id: "red-exhibitionist",
+  name: "Exhibitionist",
+  description: "",
+  notes: [
+    `You begin with the "flashing" condition. Players with the "flashing" condition may ONLY publicly reveal even when a character's power might force a card share. A Exhibitionist can't card share or privately reveal their card or their color.`,
+  ],
+  team: "Red",
+  tags: ["flashing"],
+};
+
+export const RedFanatic: Role = {
+  id: "red-fanatic",
+  name: "Fanatic",
+  description: "",
+  notes: [
+    `You are the backup character for the Eggineer. If the Eggineer card is buried or the Eggineer receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Eggineer (card sharing with the Dragon).`,
+  ],
+  team: "Red",
+  tags: ["group-king"],
+};
+export const RedFool: Role = {
+  id: "red-fool",
+  name: "Fool",
+  description: "",
+  notes: [
+    `You begin with the "foolish" condition. Players with the "foolish" condition can never turn down an offer to card share or color share.`,
+    `Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Red",
+  tags: ["foolish"],
+};
+export const RedFugitive: Role = {
+  id: "red-fugitive",
+  name: "Fugitive",
+  description: "",
+  notes: [
+    `If you card share with the One-Armed Man, the game immediately ends. Red Team wins.`,
+  ],
+  team: "Red",
+  tags: ["group-one-armed-man"],
+};
+
+export const RedGargoyle: Role = {
+  id: "red-gargoyle",
+  name: "Gargoyle",
+  description: "",
+  notes: [
+    `You have the GARGOYLE power: whenever you are selected to leave a room (via hostage selection or a character's power) you may publicly reveal your card and verbally say, "Stone", to avoid leaving the room.`,
+    `This means that any character that attempts to force you to leave the room (including the leader) must immediately choose a different player to leave. The GARGOYLE power can be used repeatedly at anytime.`,
+    `Note: the GARGOYLE power can't be used while the leader is out of the room during parlay.`,
+  ],
+  team: "Red",
+  tags: ["GARGOYLE"],
+};
+export const RedGorgon: Role = {
+  id: "red-gorgon",
+  name: "Gorgon",
+  description: "",
+  notes: [
+    `You have the GORGON power: any player that card shares with you gains the "stoned" condition. Players with the "stoned" condition may no longer vote. Rather, any time a vote is called for (e.g. in the instance of nominating/usurping a leader), "stoned" players must act stiff with their arms straight down.`,
+  ],
+  team: "Red",
+  tags: ["GORGON", "stoned", "card-share"],
 };

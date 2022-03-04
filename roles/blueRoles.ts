@@ -6,7 +6,7 @@ export const President: Role = {
   description:
     'You are a primary character. Blue Team wins if you do not gain the "dead" condition.',
   team: "Blue",
-  tags: ["group1", "primary"],
+  tags: ["group-president", "primary"],
 };
 
 export const Doctor: Role = {
@@ -18,7 +18,7 @@ export const Doctor: Role = {
     "Remember that if the President character ever switches player control (perhaps due to the Hot Potato), then the new President must card share with the Doctor.",
   ],
   team: "Blue",
-  tags: ["group1"],
+  tags: ["group-president"],
 };
 
 export const BlueSpy: Role = {
@@ -236,4 +236,63 @@ export const BlueDemon: Role = {
   ],
   team: "Blue",
   tags: ["liar"],
+};
+
+export const BlueEnforcer: Role = {
+  id: "blue-enforcer",
+  name: "Enforcer",
+  description: "",
+  notes: [
+    `You have the ENFORCER power: once per round, you may privately reveal your card to two players. You must verbally say to your target players, "You must reveal your card to one another". Those two players must card share to one another (not to you). You cannot use this power on yourself, but another Enforcer can use their power on you.`,
+    `Note: If used on a character that is unable to card share (e.g. has the "shy" condition), the power is wasted. The target must prove they can't card share by verbally saying (even if "cursed") "I can't because I am (name specific condition)".`,
+  ],
+  team: "Blue",
+  tags: ["ENFORCER", "once-per-round", "private-reveal"],
+};
+
+export const BlueEnlisted: Role = {
+  id: "blue-enlisted",
+  name: "Enlisted",
+  description: "",
+  notes: [
+    `You have the ENLIST power: during any round but the last, you may publicly reveal your card and automatically become one of the hostages for the end of that round. However, your card must permanently remain publicly revealed for the rest of the game. This means that you can only use this power once.`,
+    `The Enlisted must be a hostage during the same round in which the ENLIST power was used. If 2 Enlisted characters use their power in the same room during the same round and there is only 1 hostage position available, whichever Enlisted used their power first is to be the hostage, the other Enlisted character wasted their ENLIST power.`,
+  ],
+  team: "Blue",
+  tags: ["ENLIST", "public-reveal", "once-per-game"],
+};
+
+export const BlueEris: Role = {
+  id: "blue-eris",
+  name: "Eris",
+  description: "",
+  notes: [
+    `You have the ERIS power: once per game, you may privately reveal your card to two players. You must verbally say to your target players, "You hate each other".`,
+    `Those two players gain the "in hate" condition. Players with the "in hate" condition replace their original win objective with the following win objective: be in the opposite room of the player with whom you are "in hate" at the end of the game or fail to win this objective. You cannot use this power on yourself.`,
+    `Note: If a player with the "in hate" condition were to acquire the "in love" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+  ],
+  team: "Blue",
+  tags: ["ERIS", "in hate", "lover-haters", "once-per-game"],
+};
+
+export const BlueFatPrincess: Role = {
+  id: "blue-fat-princess",
+  name: "Fat Princess",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the King. If the King card is buried or the King receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the King (for example: ending the game in the same room as the King, card sharing with the Alchemist).`,
+  ],
+  team: "Blue",
+  tags: ["group-king", "secondary"],
+};
+
+export const BlueFirefighter: Role = {
+  id: "blue-firefighter",
+  name: "Firefighter",
+  description: "",
+  notes: [
+    `You have the FIREFIGHTER power: card sharing with the President provides the President the "fireproof" condition. If the President has the "fireproof" condition, then, at the end of the game, all players in the same room as the President also gain the "fireproof" condition. Players with the "fireproof" condition do not gain the "dead" condition from the "firebomb" condition.`,
+  ],
+  team: "Blue",
+  tags: ["FIREFIGHTER", "fireproof", "firebomb", "group-president"],
 };
