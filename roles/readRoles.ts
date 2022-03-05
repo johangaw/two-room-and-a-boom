@@ -768,6 +768,17 @@ export const RedSocialist: Role = {
   tags: ["not-implemented"],
 };
 
+export const RedTinkerer: Role = {
+  id: "red-tinkerer",
+  name: "Tinkerer",
+  description: "",
+  notes: [
+    `You are the backup character for the Engineer. If the Engineer card is buried or the Engineer receives the "dead" condition before activating the bomb, you must carry out all responsibilities associated with the Engineer (card sharing with the Bomber).`,
+  ],
+  team: "Red",
+  tags: ["group-president", "backup"],
+};
+
 export const Red: Role = {
   id: "red-",
   name: "",
