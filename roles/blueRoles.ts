@@ -28,20 +28,26 @@ export const BlueSpy: Role = {
   team: "Blue",
 };
 
-export const BlueBodySnatcher: Role = {
-  id: "blue-body-snatcher",
-  name: "Body Snatcher",
+export const BlueFirecracker: Role = {
+  id: "blue-firecracker",
+  name: "Blue Firecracker",
   description: "",
   notes: [
-    `You have the BODY SNATCHER power: if anyone card shares with your Body Snatcher card, they must give you their character card. Cards captured in this way are considered your face cards. You may show any face card you wish in future private, public, color, and card shares as long as you still have a Body Snatcher card (even if it is not your own).`,
-    `However, you gain neither the allegiance nor the powers of any acquired face cards, including any characters with powers that activate during a reveal. Players whose cards were stolen maintain their powers and allegiance, but have obviously lost all ability to share their cards with others or use any power that requires them to private, public, color or card share.`,
-    `Note: if a Body Snatcher card shares with the other Body Snatcher, and both used their Body Snatcher card when doing so, then both players lose their Body Snatcher cards to the other.`,
-    `However, both of these players may continue to show other players the face cards they've acquired, but neither player can continue to collect cards.`,
-    `Another more confusing note: when using face cards that have powers, you should not allow players to believe your power has influence over them.`,
-    `Note about primary characters: remember that characters still retain their abilities and powers. This means that the Bomber still provides everyone with the "dead" condition at the end of the game with or without his/her card. The President is still the President with or without his/her card.`,
+    `You are a secondary character. You are the backup character for the Blue Drone. If the Blue Drone card is buried or the Blue Drone receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Blue Drone.`,
   ],
   team: "Blue",
-  tags: ["BODY SNATCHER"],
+  tags: ["group-drone", "secondary", "backup"],
+};
+
+export const BlueTeam: Role = {
+  id: "blue-Team",
+  name: "Blue Team",
+  description: "",
+  notes: [
+    `You are on the Blue Team. If the President does not gain the "Dead" condition, you win. Note: any character card that has the white star icon on it is considered to be on the Blue Team.`,
+  ],
+  team: "Blue",
+  tags: [],
 };
 
 export const BlueBouncer: Role = {

@@ -29,7 +29,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["TIME"],
   },
-
   {
     name: "Trader",
     notes: [
@@ -38,7 +37,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["TRADE", "buried"],
   },
-
   {
     name: "Usurper",
     notes: [
@@ -47,7 +45,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["USURPER"],
   },
-
   {
     name: "Vampire",
     notes: [
@@ -56,7 +53,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["SEDUCTIVE", "seduced", "card-share"],
   },
-
   {
     name: "Voyeur",
     notes: [
@@ -65,7 +61,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["buried"],
   },
-
   {
     name: "Werewolf",
     notes: [
@@ -86,7 +81,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["AGENT"],
   },
-
   {
     name: "Alien",
     notes: [
@@ -96,7 +90,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["abduction"],
   },
-
   {
     name: "Ambassador",
     notes: [
@@ -107,7 +100,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["immune"],
   },
-
   {
     name: "Angel",
     notes: [
@@ -116,7 +108,6 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["honest"],
   },
-
   {
     name: "Blind",
     notes: [
@@ -125,10 +116,16 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["blind"],
   },
-
   {
-    name: "",
-    notes: [],
-    tags: [],
+    name: "Body Snatcher",
+    notes: [
+      `You have the BODY SNATCHER power: if anyone card shares with your Body Snatcher card, they must give you their character card. Cards captured in this way are considered your face cards. You may show any face card you wish in future private, public, color, and card shares as long as you still have a Body Snatcher card (even if it is not your own).`,
+      `However, you gain neither the allegiance nor the powers of any acquired face cards, including any characters with powers that activate during a reveal. Players whose cards were stolen maintain their powers and allegiance, but have obviously lost all ability to share their cards with others or use any power that requires them to private, public, color or card share.`,
+      `Note: if a Body Snatcher card shares with the other Body Snatcher, and both used their Body Snatcher card when doing so, then both players lose their Body Snatcher cards to the other.`,
+      `However, both of these players may continue to show other players the face cards they've acquired, but neither player can continue to collect cards.`,
+      `Another more confusing note: when using face cards that have powers, you should not allow players to believe your power has influence over them.`,
+      `Note about primary characters: remember that characters still retain their abilities and powers. This means that the Bomber still provides everyone with the "dead" condition at the end of the game with or without his/her card. The President is still the President with or without his/her card.`,
+    ],
+    tags: ["BODY SNATCHER"],
   },
 ];
