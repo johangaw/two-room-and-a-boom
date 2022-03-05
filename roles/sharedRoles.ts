@@ -303,4 +303,51 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["MAD SCIENTIST", "private-reveal"],
   },
+  {
+    name: "Mayor",
+    notes: [
+      `When you publicly reveal your card, your vote counts as two votes. This means that you can publicly reveal your card to count as two people for OR AGAINST the nomination of a new leader.`,
+    ],
+    tags: ["public-reveal"],
+  },
+  {
+    name: "Medic",
+    notes: [
+      `You have the MEDIC power: any player that card shares with you has all "conditions" removed. For example, a player who has been "cursed" by a Mummy would no longer have the "cursed" condition after card sharing with you. This does not make yourself immune to acquiring conditions, as you might need to find the opposing Medic.`,
+    ],
+    tags: ["MEDIC"],
+  },
+  {
+    name: "Mime",
+    notes: [`Do your best to not make any noise.`],
+    tags: [],
+  },
+  {
+    name: "Mummy",
+    notes: [
+      `You have the MUMMY power: any player that card shares with you gains the "cursed" condition. "Cursed" players must from then on do their best to not make any noise.`,
+      `Note: Because of the MUMMY power, "Cursed" players are prevented from using any powers or abilities that requires a verbalization (e.g. Agent, Rageaholic, and even Zombie).`,
+    ],
+    tags: ["MUMMY", "cursed"],
+  },
+  {
+    name: "Negotiator",
+    notes: [
+      `You begin with the "savvy" condition. Players with the "savvy" condition may only card share. You may not publicly, privately, or color share.`,
+      `Note: it is possible for "savvy" players to acquire conditions that prevent card sharing (e.g. "coy"). If this happens, then the "savvy" player can no longer perform any of the 4 types of reveals (card share, color share, private reveal, or public reveal).`,
+    ],
+    tags: ["savvy"],
+  },
+  {
+    name: "Ninja",
+    notes: [
+      `The Ninja has the NINJA power: during any round but the last, you may publicly reveal your card. You must then immediately leave your current room. Upon entering the opposing room, you must IMMEDIATELY grab any player you choose in that room.`,
+      `Both you and the chosen player are removed from the game (but do NOT gain the "dead" condition). In the case where the chosen player is a character who is unaffected by powers (example: the Immunologist), the Ninja's power has been wasted and the Ninja leaves the game alone.`,
+      `Removed characters still win or lose based upon their team or character's win objective. Backup characters become active if their corresponding characters are removed from the game (e.g. the Nurse becomes the Doctor if the Ninja removes the Doctor from the game).`,
+      `If the Ninja uses the NINJA power on a room's leader, the leader should immediately place the leader card on the ground. At this point, a new leader is nominated in the same method as the first round.`,
+      `Note: if a primary character (President or Bomber) and its corresponding backup character (President's Daughter or Martyr) are both removed from the game, the opposing team automatically wins.`,
+      `Another Note: If the leader of a room is removed, the room must nominate a new leader as in the first round. Note: because Ninjas and the targets of their NINJA power are removed from a room's population, the player count for the sake of hostages should always be 4 less than the amount of starting players. This means if you have 18 players including the Ninjas, you should be playing a 14 player game.`,
+    ],
+    tags: ["NINJA"],
+  },
 ];
