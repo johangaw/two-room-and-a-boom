@@ -350,4 +350,115 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["NINJA"],
   },
+  {
+    name: "Paparazzo",
+    notes: [
+      `Do your best to make sure there are no private conversations. You must try to be as intrusive as possible, including looking over players' shoulders at their cards, and even getting on the ground to see the bottoms of cards being passed between players.`,
+      `You can't physically manipulate other players, that is too rude. If playing with the Privacy Promise rule variant, ignore the rule as long as you publicly reveal your card to prove to others that you are permitted to be invasive.`,
+    ],
+    tags: [],
+  },
+  {
+    name: "Paranoid",
+    notes: [
+      `You begin with the "paranoid" condition. Players with the "paranoid" condition may only card share. Moreover, they may only card share once per game.`,
+    ],
+    tags: ["paranoid", "once-per-game"],
+  },
+  {
+    name: "Piper",
+    notes: [
+      `You have the PIPER power: any player that card shares with you gains the "piped" condition. Characters with the "piped" condition have an additional win condition. If players with the "piped" condition lose if they are not in the same room as the Piper player that provided them with the "piped" condition.`,
+      `Note: a player can only have a single "piped" condition.`,
+      `Another Note: it is possible that both Piper characters gain the "piped" condition.`,
+    ],
+    tags: ["PIPER", "piped"],
+  },
+  {
+    name: "Pirate",
+    notes: [
+      `You have the PIRATE power: you may publicly reveal your Pirate card, pick any player in the room (besides yourself) and verbally and loudly tell them, "Argh, walk the plank". However, your card must permanently remain publicly revealed for the rest of the game.`,
+      `This means that you can only use this power once. Your target player gains the "blasted" condition. A player with the "blasted" condition must be one of the hostages exchanged at the end of the round.`,
+      `If the PIRATE power is used during the last round, then that player is the single hostage. Note: If a player with the "blasted" condition were to acquire the "tackled" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+    ],
+    tags: ["PIRATE", "public-reveal", "once-per-game", "blasted"],
+  },
+  {
+    name: "Professor",
+    notes: [
+      `Any player that card shares with you acquires the "savvy" condition. Players with the "savvy" condition may only card share. The "savvy" condition prevents the use of private reveal and color share powers.`,
+      `Note: it is possible for "savvy" players to acquire conditions that prevent card sharing (e.g. "coy"). If this happens, then the "savvy" player can no longer perform any of the 4 types of reveals (card share, color share, private reveal, or public reveal).`,
+    ],
+    tags: ["card-share", "savvy"],
+  },
+  {
+    name: "Psychologist",
+    notes: [
+      `When you privately reveal your card to a character with the "shy" condition or the "coy" condition, that "shy" or "coy" character may then immediately card share with you, the Psychologist. If this is done, the "shy" and/or "coy" condition is removed. Furthermore, if someone with the "paranoid" condition card shares with you, the "paranoid" condition is removed.`,
+    ],
+    tags: ["shy", "coy", "paranoid"],
+  },
+  {
+    name: "Rageaholic",
+    notes: [
+      `You have an alternative win objective. If you...`,
+      `* are a room's leader`,
+      `* have already selected your hostages`,
+      `* are between rounds (the time between the end of a round and the beginning of the next round)`,
+      `* and are waiting for the other room's leader during parlay … then you may begin yelling "I'm a raging one! I'm a raging two! I'm a raging three!..". and so on until either the other leader shows up for parlay or you get to "I'm a raging ten!" If you get to and complete yelling "I'm a raging ten!" then you win and all other players lose (including the opposing Rageaholic character).`,
+      `Note: when yelling during parlay, you should be loud enough that both rooms can hear you.`,
+    ],
+    tags: [],
+  },
+  {
+    name: "Rat",
+    notes: [
+      `You have the RAT power: once per game you may publicly reveal your card to the entire room, then leave to the opposing room. However, your card must permanently remain publicly revealed for the rest of the game. While in the other room, you have the "immune" condition.`,
+      `Players with the "immune" condition are immune to all powers and conditions without exception. While in the other room Rats can never take part in any vote (e.g. voting to nominate or usurp a leader) and can never be picked by leaders to be transferred into another room (or by other characters with such powers) as they are never actually counted as part of a room's population.`,
+      `You must return to your original room before the end of the round or you automatically lose.`,
+    ],
+    tags: ["RAT", "public-reveal"],
+  },
+  {
+    name: "Secret Police",
+    notes: [
+      `You have an alternative win objective. While the Secret Police are in play, doing any action that could be deemed gameplay between rounds is strictly prohibited.`,
+      `If any players discuss gameplay or attempt to do any form of card sharing or revealing, you (the Secret Police) may point to the player that is gameplaying between rounds, publicly reveal your card (like its a badge) and yell, "Secret Police!`,
+      `You're under arrest!" As long as 1 other player in the game can verify that gameplay was indeed occurring between rounds, you win and all other players lose (including the opposing Secret Police character).`,
+      `Note: When playing with the Secret Police it is important that all players understand when a round begins and when it ends. If players are having difficulty understanding this, remember that declaring "The round is over!" is not considered gameplay.`,
+      `Another Note: Between rounds is the time between the end of a round and the beginning of the next round. This is the time when leaders parlay, swap hostages, and begin the next round.`,
+      `Yet another Note: Tip: The easiest way to be sure that the Secret Police do not win is to remain silent and still between rounds.`,
+      `Warning: A leader selecting hostages after a round's time has expired IS CONSIDERED GAMEPLAY! Leader's should be well prepared.`,
+    ],
+    tags: [],
+  },
+  {
+    name: "Security",
+    notes: [
+      `You have the TACKLE power: you may publicly reveal your Security card, pick any player in the room (besides yourself) and verbally tell them, "You're going nowhere". However, your card must permanently remain publicly revealed for the rest of the game.`,
+      `This means that you can only use this power once. If the target of your TACKLE power is not on the same team as you, they gain the "tackled" condition. "Tackled" players can't leave as a hostage this round.`,
+      `If Security uses the TACKLE power on a member of their own team, then that teammate player gains the "torn" condition. A player with the "torn" condition must permanently publicly reveal their card regardless of any powers or acquired conditions. This permanent public reveal is a punishment for choosing a member of the same team.`,
+      `Note: If a player with the "tackled" condition were to acquire the "blasted" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+    ],
+    tags: ["TACKLE"],
+  },
+  {
+    name: "Seer",
+    notes: [
+      `Before the game begins, but after character cards have been dealt, everyone is to close their eyes and publicly reveal their cards for about 30 seconds. All players are to do this regardless of their character card's abilities, powers, and starting conditions.`,
+      `Only the Seer characters may open their eyes and move freely throughout the play areas. Seer characters begin the game with the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
+      `Note: "Shy" players can card share their cards to psychologists after a psychologist player has privately revealed their card to the "shy" player. Another Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+      `Tip: the best way to address Seer players getting to look at all players' cards is to have all players dealt their character cards before separating into the 2 separate rooms. Then have the 30 second mass public reveal, and then separate into separate rooms.`,
+    ],
+    tags: [],
+  },
+  {
+    name: "Shy Guy",
+    notes: [
+      `You begin with the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
+      `Note: "Shy" players can card share their cards to psychologists after a psychologist player has privately revealed their card to the "shy" player.`,
+      `Another Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
+    ],
+    tags: ["shy"],
+  },
 ];
