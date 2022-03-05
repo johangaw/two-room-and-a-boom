@@ -12,13 +12,6 @@ export const Bomber: Role = {
   tags: ["group-president", "primary"],
 };
 
-export const RedSpy: Role = {
-  id: "red-spy",
-  name: "Spy",
-  description: "You card is Blue but you are actually on the Red team",
-  team: "Red",
-};
-
 export const RedCupid: Role = {
   id: "red-cupid",
   name: "Cupid",

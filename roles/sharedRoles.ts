@@ -461,4 +461,9 @@ const templates: RoleTemplate[] = [
     ],
     tags: ["shy"],
   },
+  {
+    name: "Spy",
+    notes: ["You card is Blue but you are actually on the Red team"],
+    tags: [],
+  },
 ];

@@ -1,12 +1,5 @@
 import { Role } from "../types/domain";
 
-export const BlueSpy: Role = {
-  id: "blue-spy",
-  name: "Spy",
-  description: "You card is Blue but you are actually on the Blue team",
-  team: "Blue",
-};
-
 export const BlueFirecracker: Role = {
   id: "blue-firecracker",
   name: "Blue Firecracker",
