@@ -28,67 +28,6 @@ export const BlueSpy: Role = {
   team: "Blue",
 };
 
-export const BlueAgent: Role = {
-  id: "blue-agent",
-  name: "Agent",
-  description: `You have the AGENT power: once per round, you may privately reveal your card to a player and force that player to card share with you. You must verbally say to the target player, "I'm using my AGENT power. You MUST reveal your card to me".`,
-  notes: [
-    `If used on a character that is unable to card share (e.g. has the "shy" condition or is a Paranoid character that has already card shared), the power is wasted. The target must prove they can't card share by verbally saying (even if "cursed") "I can't because (provide specific and honest (even if a Demon reason)".`,
-  ],
-  team: "Blue",
-  tags: ["AGENT"],
-};
-
-export const BlueAlien: Role = {
-  id: "blue-alien",
-  name: "Alien",
-  description: `You have the ABDUCTION power: you must keep the card of any character that card shares with you. You are not permitted to do anything with acquired cards, including showing the cards to others or using powers associated with the card.`,
-  notes: [
-    `Players whose cards were stolen maintain their powers and allegiance, but have obviously lost all ability to share their cards with others or use any power that requires them to private, public, color or card share.`,
-    `if an Alien card shares with the other Alien, then both players lose their cards to the other, thus losing their ABDUCTION ability.`,
-  ],
-  team: "Blue",
-  tags: ["abduction"],
-};
-
-export const BlueAmbassador: Role = {
-  id: "blue-ambassador",
-  name: "Ambassador",
-  description: "",
-  notes: [
-    `Before the game begins, but after character cards have been dealt, you must publicly announce "I am an Ambassador!" and keep your card publicly revealed for the rest of game. This public reveal is permanent.`,
-    `Ambassadors have the "immune" condition. Players with the "immune" condition are immune to all powers and conditions without exception.`,
-    `Ambassadors can walk freely between the two rooms. Ambassadors can never take part in any vote (e.g. voting to nominate or usurp a leader). Ambassadors can never be picked by leaders to be transferred into another room (or by other characters with such powers) as they are never actually counted as part of a room's population.`,
-    `Note: because Ambassadors are never considered a part of a room's population, they don't count towards the player count in the game and they don't count for or against Team Zombie's win objective. This means if you have 18 players including the Ambassadors, you should be playing a 16 player game.`,
-  ],
-  team: "Blue",
-  tags: ["immune"],
-};
-
-export const BlueAngle: Role = {
-  id: "blue-angle",
-  name: "Angel",
-  description: "",
-  notes: [
-    `You begin with the "honest" condition. Players with the "honest" condition must always verbally tell the truth (unless you're "seduced", "hypnotized", or any other condition that may influence your ability to tell the truth). This means that you are permitted to lie as long as it is not verbally.`,
-    `Note: If a player with the "honest" condition were to acquire the "liar" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
-  ],
-  team: "Blue",
-  tags: ["honest"],
-};
-
-export const BlueBlind: Role = {
-  id: "blue-blind",
-  name: "Blind",
-  description: "",
-  notes: [
-    `You begin with the "blind" condition. Players with the "blind" condition must do their best best to never open his or her eyes during the game. Don't worry, it is a short game.`,
-    `Note: Blind players can still acquire conditions and have powers used upon them, but they should not be lied to about it.`,
-  ],
-  team: "Blue",
-  tags: ["blind"],
-};
-
 export const BlueBodySnatcher: Role = {
   id: "blue-body-snatcher",
   name: "Body Snatcher",
@@ -694,6 +633,29 @@ export const BlueShyGuy: Role = {
   ],
   team: "Blue",
   tags: ["shy"],
+};
+
+export const BlueTuesdayKnight: Role = {
+  id: "blue-tuesday-knight",
+  name: "Tuesday Knight",
+  description: "",
+  notes: [
+    `You have the HUG power: if you card share with the Bomber, the game immediately ends. Blue Team wins. Note: the HUG power never works on the Martyr. If the Bomber is buried, the HUG power is never used.`,
+  ],
+  team: "Blue",
+  tags: ["HUG", "bomber", "card-share"],
+};
+
+export const BlueXenohunter: Role = {
+  id: "blue-xenohunter",
+  name: "Xenohunter",
+  description: "",
+  notes: [
+    `You have the XENOHUNTER power: after any member of the blue team publicly reveals their card to the entire room, you may give them your Xenohunter card.`,
+    `The player to whom you give your Xenohunter card is removed from the game with your card. This means that using your XENOHUNTER power will permanently remove your card from the game, not you.`,
+  ],
+  team: "Blue",
+  tags: ["group-xeno", "XENOHUNTER"],
 };
 
 export const Blue: Role = {
