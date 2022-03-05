@@ -50,101 +50,15 @@ export const BlueTeam: Role = {
   tags: [],
 };
 
-export const BlueBouncer: Role = {
-  id: "blue-bouncer",
-  name: "Bouncer",
+export const BlueCapitalist: Role = {
+  id: "blue-capitalist",
+  name: "Capitalist",
   description: "",
   notes: [
-    `You have the BOUNCER power: if you are in a room that has more players than the other room, you may privately reveal your card to any player and verbally tell them, "get out!"`,
-    `When you do, that player must immediately change rooms. You may do this at any time EXCEPT FOR THE LAST ROUND. This can be done limitlessly, but never to a room's leader.`,
-    `Note: this card should only be included in the roleset if the two rooms do not have the same number of players in them.`,
+    `Any player that card shares with you must trade in their character card for a Blue Team card before the beginning of the next round and before revealing any part of their card to another player. Your power has no effect any of the primary characters, secondary characters, or any character that is not aligned with either red or blue.`,
   ],
   team: "Blue",
-  tags: ["BOUNCER"],
-};
-
-export const BlueBully: Role = {
-  id: "blue-bully",
-  name: "Bully",
-  description: "",
-  notes: [
-    `You have the BULLY power: when a player agrees to color share with you, private reveal instead. They must private reveal their card too.`,
-    `Note: The Bully forces a private reveal, not a card share.`,
-  ],
-  team: "Blue",
-  tags: ["BULLY"],
-};
-
-export const BlueCentipede: Role = {
-  id: "blue-centipede",
-  name: "Centipede",
-  description: "",
-  notes: [
-    `You have the CENTIPEDE power: any player that card shares with you gains the "attached" condition. Any "attached" player that becomes separated from you (meaning they are no longer in the same room as you) loses the "attached" condition and replaces it with the "torn" condition.`,
-    `Players with the "torn" condition must permanently publicly reveal their card regardless of any powers or acquired conditions. Heck, they might as well just stick their card on their forehead.`,
-    `Note: if a player is no longer the Centipede (e.g. after card sharing with the Leprechaun), players with the "attached" condition remain "attached" to you.`,
-  ],
-  team: "Blue",
-  tags: ["CENTIPEDE", "attached", "torn"],
-};
-
-export const BlueCleaner: Role = {
-  id: "blue-cleaner",
-  name: "Cleaner",
-  description: "",
-  notes: [
-    `You have the CLEANSE power: you cleanse any player that card shares with you. This means that any player that card shares with you has all of their acquired conditions removed from them. For example, a player who has been "cursed" by a Mummy would no longer have the "cursed" condition after card sharing with you.`,
-    `This does not make yourself immune to acquiring conditions, as you might need to find the opposing Cleaner.`,
-  ],
-  team: "Blue",
-  tags: ["CLEANSE"],
-};
-
-export const BlueClown: Role = {
-  id: "blue-clown",
-  name: "Clown",
-  description: "",
-  notes: ["Do your best to smile at all times."],
-  team: "Blue",
-  tags: [],
-};
-
-export const BlueConspirator: Role = {
-  id: "blue-conspirator",
-  name: "Conspirator",
-  description: "",
-  notes: [
-    `You have the CONSPIRATOR power: any player that card shares with you and has the opposite team's win objective (example: blue Conspirator card sharing with a red aligned character) gains the "traitor" condition. A player with the "traitor" condition has their win objective changed to that of the opposing team.`,
-    `For example, a Blue Team player with the "traitor" condition wins if the President gains the "dead" condition (which is the win objective of the Blue Team). The CONSPIRATOR power does not work on players that are not red or blue aligned, primary characters, and secondary characters (e.g. grey character, President, Bomber, President's Daughter, Martyr, Blue Drone, etc)..`,
-    `Note: a single player can only gain a single "traitor" condition.`,
-  ],
-  team: "Blue",
-  tags: ["CONSPIRATOR", "traitor"],
-};
-
-export const BlueCoyBoy: Role = {
-  id: "blue-coy-boy",
-  name: "Coy Boy",
-  description: "",
-  notes: [
-    `You begin with the "coy" condition. Players with the "coy" condition may ONLY color share even when a character's power might force a card share. A Coy Boy can't card share, privately reveal, or publicly reveal their card or their color.`,
-    `Note: "Coy" players can card share their cards to Psychologists after a Psychologist player has privately revealed their card to the "coy" player.`,
-    `Another Note: If a player with the "foolish" condition were to acquire the "coy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
-  ],
-  team: "Blue",
-  tags: ["coy", "psychologists"],
-};
-
-export const BlueCriminal: Role = {
-  id: "blue-criminal",
-  name: "Criminal",
-  description: "",
-  notes: [
-    `You have the CRIMINAL power: any player that card shares with you gains the "shy" condition. Players with the "shy" condition may not reveal any part of their card to any player.`,
-    `Note: If a player with the "foolish" condition were to acquire the "shy" condition, the two conditions would cancel one another, leaving the player with neither condition.`,
-  ],
-  team: "Blue",
-  tags: ["CRIMINAL", "shy"],
+  tags: ["not-implemented", "card-share"],
 };
 
 export const BlueDealer: Role = {
