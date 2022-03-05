@@ -1,6 +1,6 @@
 import { Role } from "../types/domain";
 
-export const BlueFirecracker: Role = {
+export const Firecracker: Role = {
   id: "blue-firecracker",
   name: "Blue Firecracker",
   description: "",
@@ -11,7 +11,7 @@ export const BlueFirecracker: Role = {
   tags: ["group-drone", "secondary", "backup"],
 };
 
-export const BlueTeam: Role = {
+export const Team: Role = {
   id: "blue-Team",
   name: "Blue Team",
   description: "",
@@ -22,7 +22,7 @@ export const BlueTeam: Role = {
   tags: [],
 };
 
-export const BlueCapitalist: Role = {
+export const Capitalist: Role = {
   id: "blue-capitalist",
   name: "Capitalist",
   description: "",
@@ -45,7 +45,7 @@ export const Doctor: Role = {
   tags: ["group-president"],
 };
 
-export const BlueEris: Role = {
+export const Eris: Role = {
   id: "blue-eris",
   name: "Eris",
   description: "",
@@ -58,7 +58,7 @@ export const BlueEris: Role = {
   tags: ["ERIS", "in hate", "lover-haters", "once-per-game"],
 };
 
-export const BlueFatPrincess: Role = {
+export const FatPrincess: Role = {
   id: "blue-fat-princess",
   name: "Fat Princess",
   description: "",
@@ -69,7 +69,7 @@ export const BlueFatPrincess: Role = {
   tags: ["group-king", "secondary"],
 };
 
-export const BlueFirefighter: Role = {
+export const Firefighter: Role = {
   id: "blue-firefighter",
   name: "Firefighter",
   description: "",
@@ -80,7 +80,7 @@ export const BlueFirefighter: Role = {
   tags: ["FIREFIGHTER", "fireproof", "firebomb", "group-president"],
 };
 
-export const BlueKing: Role = {
+export const King: Role = {
   id: "blue-king",
   name: "King",
   description: "",
@@ -91,7 +91,7 @@ export const BlueKing: Role = {
   tags: ["toast", "group-king", "primary"],
 };
 
-export const BlueMarshal: Role = {
+export const Marshal: Role = {
   id: "blue-marshal",
   name: "Marshal",
   description: "",
@@ -102,7 +102,7 @@ export const BlueMarshal: Role = {
   tags: ["group-marshal"],
 };
 
-export const BlueNurse: Role = {
+export const Nurse: Role = {
   id: "blue-nurse",
   name: "Nurse",
   description: "",
@@ -114,7 +114,7 @@ export const BlueNurse: Role = {
   tags: ["group-president", "backup"],
 };
 
-export const BlueOneArmedMan: Role = {
+export const OneArmedMan: Role = {
   id: "blue-one-armed-man",
   name: "One-armed Man",
   description: "",
@@ -134,7 +134,7 @@ export const President: Role = {
   tags: ["group-president", "primary"],
 };
 
-export const BluePresidentsDaughter: Role = {
+export const PresidentsDaughter: Role = {
   id: "blue-presidents-daughter",
   name: "President's Daughter",
   description: "",
@@ -145,7 +145,7 @@ export const BluePresidentsDaughter: Role = {
   tags: ["group-president", "backup", "secondary"],
 };
 
-export const BluePyrotech: Role = {
+export const Pyrotech: Role = {
   id: "blue-pyrotech",
   name: "Pyrotech",
   description: "",
@@ -156,7 +156,7 @@ export const BluePyrotech: Role = {
   tags: ["PYROTECH", "firebomb", "card-share", "group-president"],
 };
 
-export const BlueTuesdayKnight: Role = {
+export const TuesdayKnight: Role = {
   id: "blue-tuesday-knight",
   name: "Tuesday Knight",
   description: "",
@@ -167,7 +167,7 @@ export const BlueTuesdayKnight: Role = {
   tags: ["HUG", "bomber", "card-share"],
 };
 
-export const BlueXenohunter: Role = {
+export const Xenohunter: Role = {
   id: "blue-xenohunter",
   name: "Xenohunter",
   description: "",
@@ -177,13 +177,4 @@ export const BlueXenohunter: Role = {
   ],
   team: "Blue",
   tags: ["group-xeno", "XENOHUNTER"],
-};
-
-export const Blue: Role = {
-  id: "blue-",
-  name: "",
-  description: "",
-  notes: [],
-  team: "Blue",
-  tags: [],
 };

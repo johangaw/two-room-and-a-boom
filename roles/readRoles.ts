@@ -12,7 +12,7 @@ export const Bomber: Role = {
   tags: ["group-president", "primary"],
 };
 
-export const RedCupid: Role = {
+export const Cupid: Role = {
   id: "red-cupid",
   name: "Cupid",
   description: "",
@@ -25,7 +25,7 @@ export const RedCupid: Role = {
   tags: ["CUPID", "once-per-game", "in love", "lover-haters"],
 };
 
-export const RedDragon: Role = {
+export const Dragon: Role = {
   id: "red-dragon",
   name: "Dragon",
   description: "",
@@ -36,7 +36,7 @@ export const RedDragon: Role = {
   team: "Red",
   tags: ["group-king", "primary"],
 };
-export const RedDragonEgg: Role = {
+export const DragonEgg: Role = {
   id: "red-dragon-egg",
   name: "Dragon Egg",
   description: "",
@@ -47,7 +47,7 @@ export const RedDragonEgg: Role = {
   tags: ["group-king", "secondary"],
 };
 
-export const RedDrBoom: Role = {
+export const DrBoom: Role = {
   id: "red-dr-boom",
   name: "Dr. Boom",
   description: "",
@@ -59,7 +59,7 @@ export const RedDrBoom: Role = {
   tags: ["group-president"],
 };
 
-export const RedEggineer: Role = {
+export const Eggineer: Role = {
   id: "red-eggineer",
   name: "Eggineer",
   description: "",
@@ -84,7 +84,7 @@ export const Engineer: Role = {
   tags: ["group-president"],
 };
 
-export const RedExhibitionist: Role = {
+export const Exhibitionist: Role = {
   id: "red-exhibitionist",
   name: "Exhibitionist",
   description: "",
@@ -95,7 +95,7 @@ export const RedExhibitionist: Role = {
   tags: ["flashing"],
 };
 
-export const RedFanatic: Role = {
+export const Fanatic: Role = {
   id: "red-fanatic",
   name: "Fanatic",
   description: "",
@@ -105,7 +105,7 @@ export const RedFanatic: Role = {
   team: "Red",
   tags: ["group-king"],
 };
-export const RedFool: Role = {
+export const Fool: Role = {
   id: "red-fool",
   name: "Fool",
   description: "",
@@ -116,7 +116,7 @@ export const RedFool: Role = {
   team: "Red",
   tags: ["foolish"],
 };
-export const RedFugitive: Role = {
+export const Fugitive: Role = {
   id: "red-fugitive",
   name: "Fugitive",
   description: "",
@@ -127,7 +127,7 @@ export const RedFugitive: Role = {
   tags: ["group-marshal"],
 };
 
-export const RedGargoyle: Role = {
+export const Gargoyle: Role = {
   id: "red-gargoyle",
   name: "Gargoyle",
   description: "",
@@ -139,7 +139,7 @@ export const RedGargoyle: Role = {
   team: "Red",
   tags: ["GARGOYLE"],
 };
-export const RedGorgon: Role = {
+export const Gorgon: Role = {
   id: "red-gorgon",
   name: "Gorgon",
   description: "",
@@ -150,7 +150,7 @@ export const RedGorgon: Role = {
   tags: ["GORGON", "stoned", "card-share"],
 };
 
-export const RedFist: Role = {
+export const Fist: Role = {
   id: "red-fist",
   name: "Red Fist",
   description: "",
@@ -161,7 +161,7 @@ export const RedFist: Role = {
   tags: ["group-drone", "primary"],
 };
 
-export const RedFoot: Role = {
+export const Foot: Role = {
   id: "red-foot",
   name: "Red Foot",
   description: "",
@@ -172,7 +172,7 @@ export const RedFoot: Role = {
   tags: ["group-drone", "secondary", "backup"],
 };
 
-export const RedTeam: Role = {
+export const Team: Role = {
   id: "red-team",
   name: "Red Team",
   description: "",
@@ -184,7 +184,7 @@ export const RedTeam: Role = {
   tags: [],
 };
 
-export const RedSocialist: Role = {
+export const Socialist: Role = {
   id: "red-socialist",
   name: "Socialist",
   description: "",
@@ -196,7 +196,7 @@ export const RedSocialist: Role = {
   tags: ["not-implemented"],
 };
 
-export const RedTinkerer: Role = {
+export const Tinkerer: Role = {
   id: "red-tinkerer",
   name: "Tinkerer",
   description: "",
@@ -207,7 +207,7 @@ export const RedTinkerer: Role = {
   tags: ["group-president", "backup"],
 };
 
-export const RedWitness: Role = {
+export const Witness: Role = {
   id: "red-witness",
   name: "Witness",
   description: "",
@@ -218,7 +218,7 @@ export const RedWitness: Role = {
   tags: ["group-marshal"],
 };
 
-export const RedXenomorph: Role = {
+export const Xenomorph: Role = {
   id: "red-xenomorph",
   name: "Xenomorph",
   description: "",
