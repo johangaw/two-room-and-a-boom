@@ -1,4 +1,4 @@
-import { Role } from "../types/domain";
+import { Role, Team } from "../types/domain";
 
 type RoleTemplate = Omit<Role, "team" | "description" | "id">;
 
@@ -467,3 +467,15 @@ const templates: RoleTemplate[] = [
     tags: [],
   },
 ];
+
+export const sharedRoles: Role[] = (["Red", "Blue"] as Team[]).flatMap((team) =>
+  templates.map((template) => ({
+    ...template,
+    id: getId(template.name, team),
+    description: "",
+    team,
+  }))
+);
+
+const getId = (name: string, team: Team): string =>
+  `${team.toLocaleLowerCase()}-${name.toLowerCase().replaceAll(" ", "-")}`;
