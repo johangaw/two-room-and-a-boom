@@ -25,28 +25,6 @@ export const Cupid: Role = {
   tags: ["CUPID", "once-per-game", "in love", "lover-haters"],
 };
 
-export const Dragon: Role = {
-  id: "red-dragon",
-  name: "Dragon",
-  description: "",
-  notes: [
-    `You are a primary character. Everyone in the same room as you at the end of the game gains the "toast" condition. The Red Team wins if the King gains the "dead" condition.`,
-    `Note: it is possible that the Dragon receives the "dead" condition before the end of the game. If this happens, then the Dragon does not breathe , failing to provide the "dead" condition to everyone in the same room at the end of the game.`,
-  ],
-  team: "Red",
-  tags: ["group-king", "primary"],
-};
-export const DragonEgg: Role = {
-  id: "red-dragon-egg",
-  name: "Dragon Egg",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the Dragon. If the Dragon card is buried or the Dragon receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the Dragon (for example: ending the game in the same room as the King, card sharing with the Eggineer).`,
-  ],
-  team: "Red",
-  tags: ["group-king", "secondary"],
-};
-
 export const DrBoom: Role = {
   id: "red-dr-boom",
   name: "Dr. Boom",
@@ -57,19 +35,6 @@ export const DrBoom: Role = {
   ],
   team: "Red",
   tags: ["group-president"],
-};
-
-export const Eggineer: Role = {
-  id: "red-eggineer",
-  name: "Eggineer",
-  description: "",
-  notes: [
-    `When playing with the Eggineer, the Red Team has the following additional win condition: the Dragon must card share with the Eggineer before the end of the game or the Red Team loses.`,
-    `At the end of the game, the Dragon will be asked if he/she card shared with the Eggineer. At that time both players will verify or deny having card shared.`,
-    `Note: remember that if the Dragon character ever switches player control (perhaps due to the Hot Potato), then the new Dragon must card share with the Eggineer.`,
-  ],
-  team: "Red",
-  tags: ["group-king"],
 };
 
 export const Engineer: Role = {
@@ -95,16 +60,6 @@ export const Exhibitionist: Role = {
   tags: ["flashing"],
 };
 
-export const Fanatic: Role = {
-  id: "red-fanatic",
-  name: "Fanatic",
-  description: "",
-  notes: [
-    `You are the backup character for the Eggineer. If the Eggineer card is buried or the Eggineer receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Eggineer (card sharing with the Dragon).`,
-  ],
-  team: "Red",
-  tags: ["group-king"],
-};
 export const Fool: Role = {
   id: "red-fool",
   name: "Fool",
@@ -172,6 +127,17 @@ export const Foot: Role = {
   tags: ["group-drone", "secondary", "backup"],
 };
 
+export const Martyr: Role = {
+  id: "red-martyr",
+  name: "Martyr",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the Bomber. If the Bomber card is buried or the Bomber receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the Bomber (for example: ending the game in the same room as the President, card sharing with the Engineer).`,
+  ],
+  team: "Blue",
+  tags: ["group-president", "backup", "secondary"],
+};
+
 export const Team: Role = {
   id: "red-team",
   name: "Red Team",
@@ -229,4 +195,53 @@ export const Xenomorph: Role = {
   ],
   team: "Red",
   tags: ["group-xeno", "XENOMORPH", "impregnated", "dead"],
+};
+
+// Dragon
+
+export const Dragon: Role = {
+  id: "red-dragon",
+  name: "Dragon",
+  description: "",
+  notes: [
+    `You are a primary character. Everyone in the same room as you at the end of the game gains the "toast" condition. The Red Team wins if the King gains the "dead" condition.`,
+    `Note: it is possible that the Dragon receives the "dead" condition before the end of the game. If this happens, then the Dragon does not breathe , failing to provide the "dead" condition to everyone in the same room at the end of the game.`,
+  ],
+  team: "Red",
+  tags: ["group-king", "primary"],
+};
+
+export const DragonEgg: Role = {
+  id: "red-dragon-egg",
+  name: "Dragon Egg",
+  description: "",
+  notes: [
+    `You are a secondary character. You are the backup character for the Dragon. If the Dragon card is buried or the Dragon receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the Dragon (for example: ending the game in the same room as the King, card sharing with the Eggineer).`,
+  ],
+  team: "Red",
+  tags: ["group-king", "secondary"],
+};
+
+export const Eggineer: Role = {
+  id: "red-eggineer",
+  name: "Eggineer",
+  description: "",
+  notes: [
+    `When playing with the Eggineer, the Red Team has the following additional win condition: the Dragon must card share with the Eggineer before the end of the game or the Red Team loses.`,
+    `At the end of the game, the Dragon will be asked if he/she card shared with the Eggineer. At that time both players will verify or deny having card shared.`,
+    `Note: remember that if the Dragon character ever switches player control (perhaps due to the Hot Potato), then the new Dragon must card share with the Eggineer.`,
+  ],
+  team: "Red",
+  tags: ["group-king"],
+};
+
+export const Fanatic: Role = {
+  id: "red-fanatic",
+  name: "Fanatic",
+  description: "",
+  notes: [
+    `You are the backup character for the Eggineer. If the Eggineer card is buried or the Eggineer receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Eggineer (card sharing with the Dragon).`,
+  ],
+  team: "Red",
+  tags: ["group-king"],
 };

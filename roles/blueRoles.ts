@@ -135,8 +135,8 @@ export const President: Role = {
 };
 
 export const PresidentsDaughter: Role = {
-  id: "blue-presidents-daughter",
-  name: "President's Daughter",
+  id: "blue-daughter",
+  name: "Daughter",
   description: "",
   notes: [
     `You are a secondary character. You are the backup character for the President. If the President card is buried or the President receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the President (for example: ending the game in the opposite room as the Bomber, card sharing with the Doctor).`,
@@ -164,7 +164,7 @@ export const TuesdayKnight: Role = {
     `You have the HUG power: if you card share with the Bomber, the game immediately ends. Blue Team wins. Note: the HUG power never works on the Martyr. If the Bomber is buried, the HUG power is never used.`,
   ],
   team: "Blue",
-  tags: ["HUG", "bomber", "card-share"],
+  tags: ["HUG", "bomber", "card-share", "group-president"],
 };
 
 export const Xenohunter: Role = {

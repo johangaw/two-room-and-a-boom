@@ -1,8 +1,8 @@
 import { Game, IStorage, Player, Role } from "../types/domain";
 import { GameUpdateDTO, NewGameDTO, TransferPlayerRoleDTO } from "../types/dto";
 import { FileStorage } from "../repositories/fileStorage";
-import { BlueCoy, BlueSpy, Doctor, President } from "../roles/blueRoles";
-import { Bomber, Engineer, RedCoy, RedSpy } from "../roles/readRoles";
+import { Doctor, President } from "../roles/blueRoles";
+import { Bomber, Engineer } from "../roles/readRoles";
 import { Gambler, Mi6 } from "../roles/grayRoles";
 import { ALL_ROLES, isRole } from "../roles/roles";
 
@@ -89,18 +89,7 @@ export async function createGame(newGameData: NewGameDTO): Promise<Game> {
     players: [],
     assignedRoles: [],
     started: false,
-    roles: [
-      President,
-      BlueCoy,
-      BlueSpy,
-      Bomber,
-      Doctor,
-      Engineer,
-      Gambler,
-      Mi6,
-      RedCoy,
-      RedSpy,
-    ],
+    roles: [],
   });
   return game;
 }

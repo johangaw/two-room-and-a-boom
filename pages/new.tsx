@@ -48,7 +48,9 @@ const NewGame: NextPage = () => {
         >
           <Stack spacing={4}>
             <TextField label="Name" name="name" required fullWidth />
-            <Button variant="contained">Create game</Button>
+            <Button type="submit" variant="contained">
+              Create game
+            </Button>
           </Stack>
         </Box>
         <ErrorMessage message={error}></ErrorMessage>

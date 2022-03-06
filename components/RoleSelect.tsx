@@ -1,5 +1,20 @@
+import Chip from "@mui/material/Chip";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Stack from "@mui/material/Stack";
 import { FC, useMemo } from "react";
 import { Role, Team } from "../types/domain";
+import { useTeamColor } from "./useTeamColor";
+import InfoIcon from "@mui/icons-material/Info";
+import Checkbox from "@mui/material/Checkbox";
+import ListItemText from "@mui/material/ListItemText";
+import List from "@mui/material/List";
+import ListSubheader from "@mui/material/ListSubheader";
+import { Typography } from "@mui/material";
+import { pairByEquivalentRoles } from "../roles/roles";
 
 interface RoleSelectProps {
   availableRoles: Role[];
@@ -11,42 +26,42 @@ export const RoleSelect: FC<RoleSelectProps> = ({
   roles,
   onChange,
 }) => {
-  const groups = availableRoles.reduce(
-    (groups, role) =>
-      Object.assign(groups, {
-        [role.team]: (groups[role.team] ?? []).concat(role),
-      }),
-    {} as Record<Team, Role[]>
+  const groupPresident = pairByEquivalentRoles(
+    availableRoles.filter((r) => r.tags?.includes("group-president"))
   );
-  const roleIds = useMemo(() => new Set(roles.map((r) => r.id)), [roles]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      {Object.entries(groups).map(([team, group], index) => (
-        <div key={index}>
-          <h3>{team}</h3>
-          <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {group.map((role, index) => (
-              <li key={index}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={roleIds.has(role.id)}
-                    onChange={(ev) =>
-                      onChange(
-                        ev.target.checked
-                          ? roles.concat(role)
-                          : roles.filter((r) => r.id !== role.id)
-                      )
-                    }
-                  />
-                  {role.name}
-                </label>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <>
+      <List sx={{ width: "100%" }} disablePadding>
+        <ListSubheader>Group President</ListSubheader>
+        {groupPresident.map(([r1, r2]) => (
+          <ListItem
+            key={`${r1.id}-${r2.id}`}
+            secondaryAction={
+              <Stack direction={"row"}>
+                <Checkbox color="primary" />
+                <Checkbox color="error" />
+              </Stack>
+            }
+            disablePadding
+          >
+            <ListItemButton
+              role={undefined}
+              // onClick={handleToggle(value)}
+              dense
+            >
+              <ListItemText
+                primary={
+                  <>
+                    <Typography color="primary">{r1.name}</Typography>
+                    <Typography color="error">{r2.name}</Typography>
+                  </>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };

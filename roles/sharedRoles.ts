@@ -468,6 +468,9 @@ const templates: RoleTemplate[] = [
   },
 ];
 
+const getId = (name: string, team: Team): string =>
+  `${team.toLocaleLowerCase()}-${name.toLowerCase().replaceAll(" ", "-")}`;
+
 export const sharedRoles: Role[] = (["Red", "Blue"] as Team[]).flatMap((team) =>
   templates.map((template) => ({
     ...template,
@@ -476,6 +479,3 @@ export const sharedRoles: Role[] = (["Red", "Blue"] as Team[]).flatMap((team) =>
     team,
   }))
 );
-
-const getId = (name: string, team: Team): string =>
-  `${team.toLocaleLowerCase()}-${name.toLowerCase().replaceAll(" ", "-")}`;
