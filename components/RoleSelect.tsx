@@ -22,6 +22,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import { Button, DialogContent, Typography } from "@mui/material";
 import { pairByEquivalentRoles } from "../roles/roles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { getColor } from "./utils";
 
 interface RoleSelectProps {
   availableRoles: RoleGroup[];
@@ -36,7 +37,7 @@ export const RoleSelect: FC<RoleSelectProps> = ({
   const [infoRole, setInfoRole] = useState<Role | null>(null);
 
   return (
-    <>
+    <div>
       {availableRoles.map((group, i) => (
         <Accordion key={i} defaultExpanded={i === 0}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -71,12 +72,9 @@ export const RoleSelect: FC<RoleSelectProps> = ({
       ))}
 
       <RoleDetailsDialog onClose={() => setInfoRole(null)} role={infoRole} />
-    </>
+    </div>
   );
 };
-
-const getColor = (team: Team) =>
-  team === "Red" ? "error" : team === "Blue" ? "primary" : "success";
 
 const RoleItem: FC<{
   role: Role;

@@ -1,7 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
 import { networkInterfaces } from "os";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ErrorMessage } from "../../../components/ErrorMessage";
 import { PageContainer } from "../../../components/PageContainer";
 import { RoleSelect } from "../../../components/RoleSelect";
@@ -14,6 +14,13 @@ import { roleGroups } from "../../../roles/roles";
 import { Game, Role } from "../../../types/domain";
 import { QRCode } from "react-qrcode-logo";
 import { FileStorage } from "../../../repositories/fileStorage";
+import Container from "@mui/material/Container";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { getColor } from "../../../components/utils";
 
 interface GameAdminPageProps {
   serverHost: string;
@@ -45,16 +52,18 @@ const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
   const gameUrl = `${serverHost}/games/${game?.id}`;
 
   return (
-    <PageContainer>
+    <Container maxWidth="xs">
       {!game ? (
-        <h1>Loading...</h1>
+        <CircularProgress />
       ) : (
-        <>
-          <h1>{game.name}</h1>
-          <p>Admin page for game {game.id}</p>
-          <p>
+        <Stack spacing={2}>
+          <Typography component="h1" variant="h2">
+            {game.name}
+          </Typography>
+          <Typography>Admin page for game {game.id}</Typography>
+          <Stack direction="row" justifyContent="center">
             <QRCode value={gameUrl} />
-          </p>
+          </Stack>
 
           <RoleSelect
             roles={game.roles}
@@ -62,17 +71,75 @@ const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
             onChange={updateRoles}
           />
 
-          <button disabled={game.started} onClick={startGameHandler}>
+          <RoleSelectionSummary roles={game.roles} />
+
+          <Button
+            variant="contained"
+            disabled={game.started}
+            onClick={startGameHandler}
+          >
             Start Game
-          </button>
+          </Button>
           <ErrorMessage message={startGameError} />
-        </>
+        </Stack>
       )}
-    </PageContainer>
+    </Container>
   );
 };
 
 export default GameAdminPage;
+
+const RoleSelectionSummary: FC<{ roles: Role[] }> = ({ roles }) => {
+  return (
+    <Stack>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Typography
+            variant="subtitle1"
+            textAlign="center"
+            color={getColor("Blue")}
+          >
+            Blue
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography
+            textAlign="center"
+            variant="subtitle1"
+            color={getColor("Red")}
+          >
+            Red
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography
+            textAlign="center"
+            variant="subtitle1"
+            color={getColor("Gray")}
+          >
+            Gray
+          </Typography>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Typography textAlign="center" color={getColor("Blue")}>
+            {roles.filter((r) => r.team === "Blue").length}
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography textAlign="center" color={getColor("Red")}>
+            {roles.filter((r) => r.team === "Red").length}
+          </Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography textAlign="center" color={getColor("Gray")}>
+            {roles.filter((r) => r.team === "Gray").length}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Stack>
+  );
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const fileStorage = new FileStorage();
