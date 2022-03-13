@@ -1,17 +1,5 @@
 import { Role } from "../types/domain";
 
-export const Bomber: Role = {
-  id: "red-bomber",
-  name: "Bomber",
-  description:
-    'You are a primary character. Everyone in the same room as you at the end of the game gains the "dead" condition. The Red Team wins if the President gains the "dead" condition.',
-  notes: [
-    'It is possible that the Bomber receives the "dead" condition before the end of the game. If this happens, then the Bomber does not detonate, failing to provide the "dead" condition to everyone in the same room at the end of the game.',
-  ],
-  team: "Red",
-  tags: ["group-president", "primary"],
-};
-
 export const Cupid: Role = {
   id: "red-cupid",
   name: "Cupid",
@@ -23,30 +11,6 @@ export const Cupid: Role = {
   ],
   team: "Red",
   tags: ["CUPID", "once-per-game", "in love", "lover-haters"],
-};
-
-export const DrBoom: Role = {
-  id: "red-dr-boom",
-  name: "Dr. Boom",
-  description: "",
-  notes: [
-    `You have the BOOM power: if you card share with the President, the game immediately ends. Red Team wins.`,
-    `Note: the BOOM power never works on the President's Daughter. If the President is buried, the BOOM power is never used.`,
-  ],
-  team: "Red",
-  tags: ["group-president"],
-};
-
-export const Engineer: Role = {
-  id: "red-engineer",
-  name: "Engineer",
-  description:
-    "When playing with the Engineer, the Red Team has the following additional win condition: the Bomber must card share with the Engineer before the end of the game or the Red Team loses. At the end of the game, the Bomber will be asked if he/she card shared with the Engineer. At that time both players will verify or deny having card shared.",
-  notes: [
-    "Remember that if the Bomber character ever switches player control (perhaps due to the Hot Potato), then the new Bomber must card share with the Engineer.",
-  ],
-  team: "Red",
-  tags: ["group-president"],
 };
 
 export const Exhibitionist: Role = {
@@ -127,17 +91,6 @@ export const Foot: Role = {
   tags: ["group-drone", "secondary", "backup"],
 };
 
-export const Martyr: Role = {
-  id: "red-martyr",
-  name: "Martyr",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the Bomber. If the Bomber card is buried or the Bomber receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the Bomber (for example: ending the game in the same room as the President, card sharing with the Engineer).`,
-  ],
-  team: "Blue",
-  tags: ["group-president", "backup", "secondary"],
-};
-
 export const Team: Role = {
   id: "red-team",
   name: "Red Team",
@@ -160,17 +113,6 @@ export const Socialist: Role = {
   ],
   team: "Red",
   tags: ["not-implemented"],
-};
-
-export const Tinkerer: Role = {
-  id: "red-tinkerer",
-  name: "Tinkerer",
-  description: "",
-  notes: [
-    `You are the backup character for the Engineer. If the Engineer card is buried or the Engineer receives the "dead" condition before activating the bomb, you must carry out all responsibilities associated with the Engineer (card sharing with the Bomber).`,
-  ],
-  team: "Red",
-  tags: ["group-president", "backup"],
 };
 
 export const Witness: Role = {
@@ -199,49 +141,49 @@ export const Xenomorph: Role = {
 
 // Dragon
 
-export const Dragon: Role = {
-  id: "red-dragon",
-  name: "Dragon",
-  description: "",
-  notes: [
-    `You are a primary character. Everyone in the same room as you at the end of the game gains the "toast" condition. The Red Team wins if the King gains the "dead" condition.`,
-    `Note: it is possible that the Dragon receives the "dead" condition before the end of the game. If this happens, then the Dragon does not breathe , failing to provide the "dead" condition to everyone in the same room at the end of the game.`,
-  ],
-  team: "Red",
-  tags: ["group-king", "primary"],
-};
+// export const Dragon: Role = {
+//   id: "red-dragon",
+//   name: "Dragon",
+//   description: "",
+//   notes: [
+//     `You are a primary character. Everyone in the same room as you at the end of the game gains the "toast" condition. The Red Team wins if the King gains the "dead" condition.`,
+//     `Note: it is possible that the Dragon receives the "dead" condition before the end of the game. If this happens, then the Dragon does not breathe , failing to provide the "dead" condition to everyone in the same room at the end of the game.`,
+//   ],
+//   team: "Red",
+//   tags: ["group-king", "primary"],
+// };
 
-export const DragonEgg: Role = {
-  id: "red-dragon-egg",
-  name: "Dragon Egg",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the Dragon. If the Dragon card is buried or the Dragon receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the Dragon (for example: ending the game in the same room as the King, card sharing with the Eggineer).`,
-  ],
-  team: "Red",
-  tags: ["group-king", "secondary"],
-};
+// export const DragonEgg: Role = {
+//   id: "red-dragon-egg",
+//   name: "Dragon Egg",
+//   description: "",
+//   notes: [
+//     `You are a secondary character. You are the backup character for the Dragon. If the Dragon card is buried or the Dragon receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the Dragon (for example: ending the game in the same room as the King, card sharing with the Eggineer).`,
+//   ],
+//   team: "Red",
+//   tags: ["group-king", "secondary"],
+// };
 
-export const Eggineer: Role = {
-  id: "red-eggineer",
-  name: "Eggineer",
-  description: "",
-  notes: [
-    `When playing with the Eggineer, the Red Team has the following additional win condition: the Dragon must card share with the Eggineer before the end of the game or the Red Team loses.`,
-    `At the end of the game, the Dragon will be asked if he/she card shared with the Eggineer. At that time both players will verify or deny having card shared.`,
-    `Note: remember that if the Dragon character ever switches player control (perhaps due to the Hot Potato), then the new Dragon must card share with the Eggineer.`,
-  ],
-  team: "Red",
-  tags: ["group-king"],
-};
+// export const Eggineer: Role = {
+//   id: "red-eggineer",
+//   name: "Eggineer",
+//   description: "",
+//   notes: [
+//     `When playing with the Eggineer, the Red Team has the following additional win condition: the Dragon must card share with the Eggineer before the end of the game or the Red Team loses.`,
+//     `At the end of the game, the Dragon will be asked if he/she card shared with the Eggineer. At that time both players will verify or deny having card shared.`,
+//     `Note: remember that if the Dragon character ever switches player control (perhaps due to the Hot Potato), then the new Dragon must card share with the Eggineer.`,
+//   ],
+//   team: "Red",
+//   tags: ["group-king"],
+// };
 
-export const Fanatic: Role = {
-  id: "red-fanatic",
-  name: "Fanatic",
-  description: "",
-  notes: [
-    `You are the backup character for the Eggineer. If the Eggineer card is buried or the Eggineer receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Eggineer (card sharing with the Dragon).`,
-  ],
-  team: "Red",
-  tags: ["group-king"],
-};
+// export const Fanatic: Role = {
+//   id: "red-fanatic",
+//   name: "Fanatic",
+//   description: "",
+//   notes: [
+//     `You are the backup character for the Eggineer. If the Eggineer card is buried or the Eggineer receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Eggineer (card sharing with the Dragon).`,
+//   ],
+//   team: "Red",
+//   tags: ["group-king"],
+// };

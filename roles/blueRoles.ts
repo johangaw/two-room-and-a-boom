@@ -1,5 +1,16 @@
 import { Role } from "../types/domain";
 
+export const Drone: Role = {
+  id: "blue-drone",
+  name: "Blue Drone",
+  description: "",
+  notes: [
+    `You are a primary character. The Blue Team wins if you are in the same room as the Red Fist at the end of the game.`,
+  ],
+  team: "Blue",
+  tags: ["group-drone", "primary"],
+};
+
 export const Firecracker: Role = {
   id: "blue-firecracker",
   name: "Blue Firecracker",
@@ -33,18 +44,6 @@ export const Capitalist: Role = {
   tags: ["not-implemented", "card-share"],
 };
 
-export const Doctor: Role = {
-  id: "blue-doctor",
-  name: "Doctor",
-  description:
-    "When playing with the Doctor, the Blue Team has the following additional win condition: the President must card share with the Doctor before the end of the game or the Blue Team loses. At the end of the game, the President will be asked if he/she card shared with the Doctor. At that time both players will verify or deny having card shared.",
-  notes: [
-    "Remember that if the President character ever switches player control (perhaps due to the Hot Potato), then the new President must card share with the Doctor.",
-  ],
-  team: "Blue",
-  tags: ["group-president"],
-};
-
 export const Eris: Role = {
   id: "blue-eris",
   name: "Eris",
@@ -58,39 +57,6 @@ export const Eris: Role = {
   tags: ["ERIS", "in hate", "lover-haters", "once-per-game"],
 };
 
-export const FatPrincess: Role = {
-  id: "blue-fat-princess",
-  name: "Fat Princess",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the King. If the King card is buried or the King receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the King (for example: ending the game in the same room as the King, card sharing with the Alchemist).`,
-  ],
-  team: "Blue",
-  tags: ["group-king", "secondary"],
-};
-
-export const Firefighter: Role = {
-  id: "blue-firefighter",
-  name: "Firefighter",
-  description: "",
-  notes: [
-    `You have the FIREFIGHTER power: card sharing with the President provides the President the "fireproof" condition. If the President has the "fireproof" condition, then, at the end of the game, all players in the same room as the President also gain the "fireproof" condition. Players with the "fireproof" condition do not gain the "dead" condition from the "firebomb" condition.`,
-  ],
-  team: "Blue",
-  tags: ["FIREFIGHTER", "fireproof", "firebomb", "group-president"],
-};
-
-export const King: Role = {
-  id: "blue-king",
-  name: "King",
-  description: "",
-  notes: [
-    `You are a primary character. Blue Team wins if you do not gain the "toast" condition.`,
-  ],
-  team: "Blue",
-  tags: ["toast", "group-king", "primary"],
-};
-
 export const Marshal: Role = {
   id: "blue-marshal",
   name: "Marshal",
@@ -100,18 +66,6 @@ export const Marshal: Role = {
   ],
   team: "Blue",
   tags: ["group-marshal"],
-};
-
-export const Nurse: Role = {
-  id: "blue-nurse",
-  name: "Nurse",
-  description: "",
-  notes: [
-    `You are the backup character for the Doctor.`,
-    `If the Doctor card is buried or the Doctor receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Doctor (card sharing with the President).`,
-  ],
-  team: "Blue",
-  tags: ["group-president", "backup"],
 };
 
 export const OneArmedMan: Role = {
@@ -125,48 +79,6 @@ export const OneArmedMan: Role = {
   tags: ["group-marshal"],
 };
 
-export const President: Role = {
-  id: "blue-president",
-  name: "President",
-  description:
-    'You are a primary character. Blue Team wins if you do not gain the "dead" condition.',
-  team: "Blue",
-  tags: ["group-president", "primary"],
-};
-
-export const PresidentsDaughter: Role = {
-  id: "blue-daughter",
-  name: "Daughter",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the President. If the President card is buried or the President receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the President (for example: ending the game in the opposite room as the Bomber, card sharing with the Doctor).`,
-  ],
-  team: "Blue",
-  tags: ["group-president", "backup", "secondary"],
-};
-
-export const Pyrotech: Role = {
-  id: "blue-pyrotech",
-  name: "Pyrotech",
-  description: "",
-  notes: [
-    `You have the PYROTECH power: card sharing with the Bomber provides the "firebomb" condition. If the Bomber has the "firebomb" condition at the end of the game, all players gain the "dead" condition (regardless of what room they are in).`,
-  ],
-  team: "Blue",
-  tags: ["PYROTECH", "firebomb", "card-share", "group-president"],
-};
-
-export const TuesdayKnight: Role = {
-  id: "blue-tuesday-knight",
-  name: "Tuesday Knight",
-  description: "",
-  notes: [
-    `You have the HUG power: if you card share with the Bomber, the game immediately ends. Blue Team wins. Note: the HUG power never works on the Martyr. If the Bomber is buried, the HUG power is never used.`,
-  ],
-  team: "Blue",
-  tags: ["HUG", "bomber", "card-share", "group-president"],
-};
-
 export const Xenohunter: Role = {
   id: "blue-xenohunter",
   name: "Xenohunter",
@@ -178,3 +90,27 @@ export const Xenohunter: Role = {
   team: "Blue",
   tags: ["group-xeno", "XENOHUNTER"],
 };
+
+// group-king
+
+// export const FatPrincess: Role = {
+//   id: "blue-fat-princess",
+//   name: "Fat Princess",
+//   description: "",
+//   notes: [
+//     `You are a secondary character. You are the backup character for the King. If the King card is buried or the King receives the "toast" condition before the end of the game, you must carry out all responsibilities associated with the King (for example: ending the game in the same room as the King, card sharing with the Alchemist).`,
+//   ],
+//   team: "Blue",
+//   tags: ["group-king", "secondary"],
+// };
+
+// export const King: Role = {
+//   id: "blue-king",
+//   name: "King",
+//   description: "",
+//   notes: [
+//     `You are a primary character. Blue Team wins if you do not gain the "toast" condition.`,
+//   ],
+//   team: "Blue",
+//   tags: ["toast", "group-king", "primary"],
+// };

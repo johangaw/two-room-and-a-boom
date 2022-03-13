@@ -21,6 +21,7 @@ export interface Role {
   readonly notes?: string[];
   readonly team: Team;
   readonly tags?: string[];
+  readonly linkedRoles?: string[];
 }
 
 export interface IStorage {
