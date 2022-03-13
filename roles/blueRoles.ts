@@ -1,27 +1,5 @@
 import { Role } from "../types/domain";
 
-export const Drone: Role = {
-  id: "blue-drone",
-  name: "Blue Drone",
-  description: "",
-  notes: [
-    `You are a primary character. The Blue Team wins if you are in the same room as the Red Fist at the end of the game.`,
-  ],
-  team: "Blue",
-  tags: ["group-drone", "primary"],
-};
-
-export const Firecracker: Role = {
-  id: "blue-firecracker",
-  name: "Blue Firecracker",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the Blue Drone. If the Blue Drone card is buried or the Blue Drone receives the "dead" condition before the end of the game, you must carry out all responsibilities associated with the Blue Drone.`,
-  ],
-  team: "Blue",
-  tags: ["group-drone", "secondary", "backup"],
-};
-
 export const Team: Role = {
   id: "blue-Team",
   name: "Blue Team",
@@ -57,28 +35,6 @@ export const Eris: Role = {
   tags: ["ERIS", "in hate", "lover-haters", "once-per-game"],
 };
 
-export const Marshal: Role = {
-  id: "blue-marshal",
-  name: "Marshal",
-  description: "",
-  notes: [
-    `If you card share with the Fugitive, the game immediately ends. Blue Team wins.`,
-  ],
-  team: "Blue",
-  tags: ["group-marshal"],
-};
-
-export const OneArmedMan: Role = {
-  id: "blue-one-armed-man",
-  name: "One-armed Man",
-  description: "",
-  notes: [
-    `If you card share with the Witness, the game immediately ends. Blue Team wins.`,
-  ],
-  team: "Blue",
-  tags: ["group-marshal"],
-};
-
 export const Xenohunter: Role = {
   id: "blue-xenohunter",
   name: "Xenohunter",
@@ -89,6 +45,7 @@ export const Xenohunter: Role = {
   ],
   team: "Blue",
   tags: ["group-xeno", "XENOHUNTER"],
+  linkedRoles: ["red-xenomorph"],
 };
 
 // group-king

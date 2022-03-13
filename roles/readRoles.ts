@@ -35,16 +35,6 @@ export const Fool: Role = {
   team: "Red",
   tags: ["foolish"],
 };
-export const Fugitive: Role = {
-  id: "red-fugitive",
-  name: "Fugitive",
-  description: "",
-  notes: [
-    `If you card share with the One-Armed Man, the game immediately ends. Red Team wins.`,
-  ],
-  team: "Red",
-  tags: ["group-marshal"],
-};
 
 export const Gargoyle: Role = {
   id: "red-gargoyle",
@@ -67,28 +57,6 @@ export const Gorgon: Role = {
   ],
   team: "Red",
   tags: ["GORGON", "stoned", "card-share"],
-};
-
-export const Fist: Role = {
-  id: "red-fist",
-  name: "Red Fist",
-  description: "",
-  notes: [
-    `You are a primary character. The Red Team wins if you are not in the same room as the Blue Drone at the end of the game.`,
-  ],
-  team: "Red",
-  tags: ["group-drone", "primary"],
-};
-
-export const Foot: Role = {
-  id: "red-foot",
-  name: "Red Foot",
-  description: "",
-  notes: [
-    `You are a secondary character. You are the backup character for the Red Fist. If the Red Fist card is buried or the Red Fist receives the "dead" condition before the bomb is activated, you must carry out all responsibilities associated with the Red Fist.`,
-  ],
-  team: "Red",
-  tags: ["group-drone", "secondary", "backup"],
 };
 
 export const Team: Role = {
@@ -115,17 +83,6 @@ export const Socialist: Role = {
   tags: ["not-implemented"],
 };
 
-export const Witness: Role = {
-  id: "red-witness",
-  name: "Witness",
-  description: "",
-  notes: [
-    `If you card share with the Marshal, the game immediately ends. Red Team wins.`,
-  ],
-  team: "Red",
-  tags: ["group-marshal"],
-};
-
 export const Xenomorph: Role = {
   id: "red-xenomorph",
   name: "Xenomorph",
@@ -137,6 +94,7 @@ export const Xenomorph: Role = {
   ],
   team: "Red",
   tags: ["group-xeno", "XENOMORPH", "impregnated", "dead"],
+  linkedRoles: ["blue-xenohunter"],
 };
 
 // Dragon
