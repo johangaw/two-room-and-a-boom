@@ -2,6 +2,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import { FC } from "react";
 import { Role } from "../types/domain";
+import { useTeams } from "./useTeams";
 import { getColor } from "./utils";
 
 interface RoleListProps {
@@ -9,9 +10,7 @@ interface RoleListProps {
 }
 
 export const RoleList: FC<RoleListProps> = ({ roles }) => {
-  const blueRoles = roles.filter((r) => r.team === "Blue");
-  const redRoles = roles.filter((r) => r.team === "Red");
-  const grayRoles = roles.filter((r) => r.team === "Gray");
+  const { blueRoles, grayRoles, redRoles } = useTeams(roles);
   return (
     <Stack spacing={2}>
       {[blueRoles, redRoles, grayRoles].map((teamGroup, i) => (
