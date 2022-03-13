@@ -4,13 +4,11 @@ import Stack from "@mui/material/Stack";
 import { FC } from "react";
 import { Player } from "../types/domain";
 
-interface JoinedPlayersSummaryProps {
+interface PlayerListProps {
   players: Player[];
 }
 
-export const JoinedPlayersSummary: FC<JoinedPlayersSummaryProps> = ({
-  players,
-}) => {
+export const PlayerList: FC<PlayerListProps> = ({ players }) => {
   return (
     <Stack>
       <Typography>Player count: {players.length}</Typography>

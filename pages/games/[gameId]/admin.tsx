@@ -9,7 +9,7 @@ import { networkInterfaces } from "os";
 import { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { ErrorMessage } from "../../../components/ErrorMessage";
-import { JoinedPlayersSummary } from "../../../components/JoinedPlayersSummary";
+import { PlayerList } from "../../../components/PlayerList";
 import { RoleSelect } from "../../../components/RoleSelect";
 import { RoleSelectionSummary } from "../../../components/RoleSelectionSummary";
 import { useGame } from "../../../components/useGame";
@@ -78,7 +78,7 @@ const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
 
         <RoleSelectionSummary roles={game.roles} />
 
-        <JoinedPlayersSummary players={game.players} />
+        <PlayerList players={game.players} />
 
         <Button
           variant="contained"

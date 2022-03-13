@@ -1,3 +1,8 @@
+import { Button, TextField } from "@mui/material";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { GetServerSideProps, NextPage } from "next";
@@ -5,9 +10,9 @@ import React, { FC, useState } from "react";
 import { Card } from "../../components/Card";
 import { centerCenter, fullSize } from "../../components/css";
 import { ErrorMessage } from "../../components/ErrorMessage";
-import { Loader } from "../../components/Loader";
 import { Overlay } from "../../components/Overlay";
-import { PageContainer } from "../../components/PageContainer";
+import { PlayerList } from "../../components/PlayerList";
+import { RoleList } from "../../components/RoleList";
 import { SelectRoleButton } from "../../components/SelectRoleButton";
 import { TransferRoleButton } from "../../components/TransferRoleButton";
 import { useGame } from "../../components/useGame";
@@ -92,9 +97,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
 const LoadingPage: FC = () => {
   return (
-    <PageContainer>
-      <Loader />
-    </PageContainer>
+    <Container maxWidth="xs">
+      <CircularProgress />
+    </Container>
   );
 };
 
@@ -105,53 +110,63 @@ const SetUsernamePage: FC<{
   const [name, setName] = useState(initialName);
 
   return (
-    <PageContainer>
-      <form
-        onSubmit={(ev) => {
-          ev.preventDefault();
-          onSubmit(name);
-        }}
-      >
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            required
-            value={name}
-            onChange={(ev) => setName(ev.target.value)}
-          />
-        </label>
-        <button>Join</button>
-      </form>
-    </PageContainer>
+    <Container maxWidth="xs">
+      <Stack spacing={2}>
+        <Typography variant="h2" component="h1">
+          Lobby
+        </Typography>
+        <Typography>Enter your name order to join the game</Typography>
+        <Box
+          component="form"
+          noValidate
+          autoComplete="off"
+          onSubmit={(ev: any) => {
+            ev.preventDefault();
+            onSubmit(name);
+          }}
+        >
+          <Stack spacing={2}>
+            <TextField
+              label="Name"
+              value={name}
+              name="name"
+              required
+              onChange={(ev) => setName(ev.target.value)}
+            />
+            <Button type="submit" variant="contained">
+              Join
+            </Button>
+          </Stack>
+        </Box>
+      </Stack>
+    </Container>
   );
 };
 
 const LobbyPage: FC<{ game: Game }> = ({ game }) => {
   return (
-    <PageContainer>
-      <h1>Lobby</h1>
-      <p>Waiting for game to start</p>
-      <hr />
-      {game.players.map((p) => (
-        <p key={p.id}>{p.name}</p>
-      ))}
-      <hr />
-      {game.roles.map((r) => (
-        <p key={r.id}>{r.name}</p>
-      ))}
-    </PageContainer>
+    <Container maxWidth="xs">
+      <Stack spacing={2}>
+        <Typography variant="h2" component="h1">
+          Lobby
+        </Typography>
+        <Typography>Waiting for game to start</Typography>
+        <Divider />
+        <RoleList roles={game.roles} />
+        <Divider />
+        <PlayerList players={game.players} />
+      </Stack>
+    </Container>
   );
 };
 
 const ErrorPage: FC<{ message: string }> = ({ message }) => {
   return (
-    <PageContainer>
+    <Container maxWidth="xs">
       <div style={{ ...fullSize, ...centerCenter }}>
         <ErrorMessage message={message} />
       </div>
-    </PageContainer>
+    </Container>
   );
 };
 
