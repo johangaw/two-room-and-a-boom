@@ -23,6 +23,7 @@ import { Button, DialogContent, Typography } from "@mui/material";
 import { pairByEquivalentRoles } from "../roles/roles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getColor } from "./utils";
+import { useIdSet } from "./useIdSet";
 
 interface RoleSelectProps {
   availableRoles: RoleGroup[];
@@ -36,12 +37,17 @@ export const RoleSelect: FC<RoleSelectProps> = ({
 }) => {
   const [infoRole, setInfoRole] = useState<Role | null>(null);
 
+  const roleIds = useIdSet(roles);
+
   return (
     <div>
       {availableRoles.map((group, i) => (
         <Accordion key={i} defaultExpanded={i === 0}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>{group.name}</Typography>
+            <Typography>
+              {group.name} (
+              {group.roles.filter((r) => roleIds.has(r.id)).length})
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{ color: "text.secondary" }}>
@@ -49,7 +55,7 @@ export const RoleSelect: FC<RoleSelectProps> = ({
             </Typography>
             <List sx={{ width: "100%" }} disablePadding>
               {group.roles.map((role) => {
-                const selected = roles.some((r) => r.id === role.id);
+                const selected = roleIds.has(role.id);
                 return (
                   <RoleItem
                     selected={selected}
