@@ -6,7 +6,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Stack from "@mui/material/Stack";
 import { FC, useMemo, useState } from "react";
-import { Role, Team } from "../types/domain";
+import { Role, RoleGroup, Team } from "../types/domain";
 import { useTeamColor } from "./useTeamColor";
 import InfoIcon from "@mui/icons-material/Info";
 import Checkbox from "@mui/material/Checkbox";
@@ -20,7 +20,7 @@ import { Button, DialogContent, Typography } from "@mui/material";
 import { pairByEquivalentRoles } from "../roles/roles";
 
 interface RoleSelectProps {
-  availableRoles: Role[];
+  availableRoles: RoleGroup[];
   roles: Role[];
   onChange: (roles: Role[]) => void;
 }
@@ -34,24 +34,29 @@ export const RoleSelect: FC<RoleSelectProps> = ({
   return (
     <>
       <List sx={{ width: "100%" }} disablePadding>
-        {availableRoles.map((role) => {
-          const selected = roles.some((r) => r.id === role.id);
-          return (
-            <RoleItem
-              selected={selected}
-              key={role.id}
-              role={role}
-              onInfoClick={() => setInfoRole(role)}
-              onSelect={() =>
-                onChange(
-                  selected
-                    ? roles.filter((r) => r.id !== role.id)
-                    : roles.concat(role)
-                )
-              }
-            />
-          );
-        })}
+        {availableRoles.map((group) => (
+          <>
+            <ListSubheader>{group.name}</ListSubheader>
+            {group.roles.map((role) => {
+              const selected = roles.some((r) => r.id === role.id);
+              return (
+                <RoleItem
+                  selected={selected}
+                  key={role.id}
+                  role={role}
+                  onInfoClick={() => setInfoRole(role)}
+                  onSelect={() =>
+                    onChange(
+                      selected
+                        ? roles.filter((r) => r.id !== role.id)
+                        : roles.concat(role)
+                    )
+                  }
+                />
+              );
+            })}
+          </>
+        ))}
       </List>
       <RoleDetailsDialog onClose={() => setInfoRole(null)} role={infoRole} />
     </>

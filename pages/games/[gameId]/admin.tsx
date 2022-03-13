@@ -10,7 +10,7 @@ import {
   startGame,
   updateGameRoles,
 } from "../../../connections/gameApiConnections";
-import { ALL_ROLES } from "../../../roles/roles";
+import { roleGroups } from "../../../roles/roles";
 import { Game, Role } from "../../../types/domain";
 import { QRCode } from "react-qrcode-logo";
 import { FileStorage } from "../../../repositories/fileStorage";
@@ -58,7 +58,7 @@ const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
 
           <RoleSelect
             roles={game.roles}
-            availableRoles={ALL_ROLES}
+            availableRoles={roleGroups}
             onChange={updateRoles}
           />
 

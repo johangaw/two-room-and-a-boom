@@ -4,7 +4,7 @@ import { FileStorage } from "../repositories/fileStorage";
 import { Doctor, President } from "../roles/blueRoles";
 import { Bomber, Engineer } from "../roles/readRoles";
 import { Gambler, Mi6 } from "../roles/grayRoles";
-import { ALL_ROLES, isRole } from "../roles/roles";
+import { allRoles, isRole } from "../roles/roles";
 
 const storage: IStorage = new FileStorage();
 
@@ -46,7 +46,7 @@ export async function updateGame(
     name: data.name ?? game.name,
     roles:
       data?.roleIds
-        ?.map((id) => ALL_ROLES.find((r) => r.id === id))
+        ?.map((id) => allRoles.find((r) => r.id === id))
         ?.filter(isRole) ?? game.roles,
   });
 }

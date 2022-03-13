@@ -24,6 +24,12 @@ export interface Role {
   readonly linkedRoles?: string[];
 }
 
+export interface RoleGroup {
+  name: string;
+  description: string;
+  roles: Role[];
+}
+
 export interface IStorage {
   getGames(): Promise<Game[]>;
   getGame(gameId: string): Promise<Game | null>;
