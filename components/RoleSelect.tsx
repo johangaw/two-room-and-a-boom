@@ -30,56 +30,66 @@ export const RoleSelect: FC<RoleSelectProps> = ({
   onChange,
 }) => {
   const [infoRole, setInfoRole] = useState<Role | null>(null);
-  const getColor = (team: Team) =>
-    team === "Red" ? "error" : team === "Blue" ? "primary" : "success";
 
   return (
     <>
       <List sx={{ width: "100%" }} disablePadding>
-        {availableRoles.map((r) => {
-          const selected = roles.some((role) => role.id === r.id);
+        {availableRoles.map((role) => {
+          const selected = roles.some((r) => r.id === role.id);
           return (
-            <ListItem
-              key={`${r.id}`}
-              secondaryAction={
-                <IconButton
-                  edge="end"
-                  aria-label="comments"
-                  onClick={() => setInfoRole(r)}
-                >
-                  <InfoIcon />
-                </IconButton>
+            <RoleItem
+              selected={selected}
+              key={role.id}
+              role={role}
+              onInfoClick={() => setInfoRole(role)}
+              onSelect={() =>
+                onChange(
+                  selected
+                    ? roles.filter((r) => r.id !== role.id)
+                    : roles.concat(role)
+                )
               }
-              disablePadding
-            >
-              <ListItemButton
-                onClick={() =>
-                  onChange(
-                    selected
-                      ? roles.filter((role) => role.id !== r.id)
-                      : roles.concat(r)
-                  )
-                }
-              >
-                <ListItemIcon>
-                  <Checkbox
-                    onChange={(ev) => ev.preventDefault()}
-                    color={getColor(r.team)}
-                    checked={selected}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary={
-                    <Typography color={getColor(r.team)}>{r.name}</Typography>
-                  }
-                />
-              </ListItemButton>
-            </ListItem>
+            />
           );
         })}
       </List>
       <RoleDetailsDialog onClose={() => setInfoRole(null)} role={infoRole} />
     </>
+  );
+};
+
+const getColor = (team: Team) =>
+  team === "Red" ? "error" : team === "Blue" ? "primary" : "success";
+
+const RoleItem: FC<{
+  role: Role;
+  selected: boolean;
+  onSelect: () => void;
+  onInfoClick: () => void;
+}> = ({ role, selected, onSelect, onInfoClick }) => {
+  const color = getColor(role.team);
+  return (
+    <ListItem
+      secondaryAction={
+        <IconButton edge="end" aria-label="comments" onClick={onInfoClick}>
+          <InfoIcon />
+        </IconButton>
+      }
+      disablePadding
+    >
+      <ListItemButton onClick={onSelect}>
+        <ListItemIcon>
+          <Checkbox
+            onChange={(ev) => ev.preventDefault()}
+            color={color}
+            checked={selected}
+          />
+        </ListItemIcon>
+        <ListItemText
+          primary={<Typography color={color}>{role.name}</Typography>}
+        />
+      </ListItemButton>
+    </ListItem>
   );
 };
 
