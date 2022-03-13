@@ -14,10 +14,14 @@ import ListItemText from "@mui/material/ListItemText";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContentText from "@mui/material/DialogContentText";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 import List from "@mui/material/List";
 import ListSubheader from "@mui/material/ListSubheader";
 import { Button, DialogContent, Typography } from "@mui/material";
 import { pairByEquivalentRoles } from "../roles/roles";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface RoleSelectProps {
   availableRoles: RoleGroup[];
@@ -33,31 +37,36 @@ export const RoleSelect: FC<RoleSelectProps> = ({
 
   return (
     <>
-      <List sx={{ width: "100%" }} disablePadding>
-        {availableRoles.map((group) => (
-          <>
-            <ListSubheader>{group.name}</ListSubheader>
-            {group.roles.map((role) => {
-              const selected = roles.some((r) => r.id === role.id);
-              return (
-                <RoleItem
-                  selected={selected}
-                  key={role.id}
-                  role={role}
-                  onInfoClick={() => setInfoRole(role)}
-                  onSelect={() =>
-                    onChange(
-                      selected
-                        ? roles.filter((r) => r.id !== role.id)
-                        : roles.concat(role)
-                    )
-                  }
-                />
-              );
-            })}
-          </>
-        ))}
-      </List>
+      {availableRoles.map((group, i) => (
+        <Accordion key={i} defaultExpanded={i === 0}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography>{group.name}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <List sx={{ width: "100%" }} disablePadding>
+              {group.roles.map((role) => {
+                const selected = roles.some((r) => r.id === role.id);
+                return (
+                  <RoleItem
+                    selected={selected}
+                    key={role.id}
+                    role={role}
+                    onInfoClick={() => setInfoRole(role)}
+                    onSelect={() =>
+                      onChange(
+                        selected
+                          ? roles.filter((r) => r.id !== role.id)
+                          : roles.concat(role)
+                      )
+                    }
+                  />
+                );
+              })}
+            </List>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+
       <RoleDetailsDialog onClose={() => setInfoRole(null)} role={infoRole} />
     </>
   );

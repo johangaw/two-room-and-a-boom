@@ -3,13 +3,19 @@ import * as blueRoles from "./blueRoles";
 import * as redRoles from "./readRoles";
 import * as grayRoles from "./grayRoles";
 import * as presidentRoles from "./presidentRoles";
+import * as fourWayWinRoles from "./fourWayWinRoles";
 import { sharedRoles } from "./sharedRoles";
 
 export const roleGroups = ([] as RoleGroup[]).concat(
   {
-    name: "President cabinet",
+    name: "The president cabinet",
     description: "",
     roles: Object.values(presidentRoles),
+  },
+  {
+    name: "Rock, Bag, Scissor",
+    description: "",
+    roles: Object.values(fourWayWinRoles),
   }
 
   // Object.values(blueRoles),
