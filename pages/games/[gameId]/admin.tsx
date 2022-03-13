@@ -9,8 +9,10 @@ import { networkInterfaces } from "os";
 import { useEffect, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { ErrorMessage } from "../../../components/ErrorMessage";
+import { JoinedPlayersSummary } from "../../../components/JoinedPlayersSummary";
 import { RoleSelect } from "../../../components/RoleSelect";
 import { RoleSelectionSummary } from "../../../components/RoleSelectionSummary";
+import { useGame } from "../../../components/useGame";
 import {
   getGame,
   startGame,
@@ -25,18 +27,14 @@ interface GameAdminPageProps {
 }
 
 const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
-  const [game, setGame] = useState<Game | null>(null);
-  const [startGameError, setStartGameError] = useState("");
   const router = useRouter();
   const gameId = router.query.gameId as string;
-
-  useEffect(() => {
-    if (!gameId) return;
-    getGame(gameId).then(setGame);
-  }, [gameId]);
+  const { game, refresh, loading, error } = useGame(gameId);
+  const [startGameError, setStartGameError] = useState("");
+  const gameUrl = `${serverHost}/games/${game?.id}`;
 
   const startGameHandler = () => {
-    startGame(gameId).then(setGame).catch(setStartGameError);
+    startGame(gameId).then(refresh).catch(setStartGameError);
   };
 
   const updateRoles = (roles: Role[]) => {
@@ -44,43 +42,53 @@ const GameAdminPage: NextPage<GameAdminPageProps> = ({ serverHost }) => {
     updateGameRoles(
       game.id,
       roles.map((r) => r.id)
-    ).then(setGame);
+    ).then(refresh);
   };
 
-  const gameUrl = `${serverHost}/games/${game?.id}`;
+  if (loading)
+    return (
+      <Container maxWidth="xs">
+        <CircularProgress />
+      </Container>
+    );
+
+  if (!game || error)
+    return (
+      <Container maxWidth="xs">
+        <ErrorMessage message={error ?? "Something went wrong"} />
+      </Container>
+    );
 
   return (
     <Container maxWidth="xs">
-      {!game ? (
-        <CircularProgress />
-      ) : (
-        <Stack spacing={2}>
-          <Typography component="h1" variant="h2">
-            {game.name}
-          </Typography>
-          <Typography>Admin page for game {game.id}</Typography>
-          <Stack direction="row" justifyContent="center">
-            <QRCode value={gameUrl} />
-          </Stack>
-
-          <RoleSelect
-            roles={game.roles}
-            availableRoles={roleGroups}
-            onChange={updateRoles}
-          />
-
-          <RoleSelectionSummary roles={game.roles} />
-
-          <Button
-            variant="contained"
-            disabled={game.started}
-            onClick={startGameHandler}
-          >
-            Start Game
-          </Button>
-          <ErrorMessage message={startGameError} />
+      <Stack spacing={2}>
+        <Typography component="h1" variant="h2">
+          {game.name}
+        </Typography>
+        <Typography>Admin page for game {game.id}</Typography>
+        <Stack direction="row" justifyContent="center">
+          <QRCode value={gameUrl} />
         </Stack>
-      )}
+
+        <RoleSelect
+          roles={game.roles}
+          availableRoles={roleGroups}
+          onChange={updateRoles}
+        />
+
+        <RoleSelectionSummary roles={game.roles} />
+
+        <JoinedPlayersSummary players={game.players} />
+
+        <Button
+          variant="contained"
+          disabled={game.started}
+          onClick={startGameHandler}
+        >
+          Start Game
+        </Button>
+        <ErrorMessage message={startGameError} />
+      </Stack>
     </Container>
   );
 };
