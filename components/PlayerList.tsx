@@ -14,7 +14,7 @@ export const PlayerList: FC<PlayerListProps> = ({ players }) => {
       <Typography>Player count: {players.length}</Typography>
       <Stack direction="row">
         {players.map((p) => (
-          <Chip key={p.id} label={p.name} />
+          <Chip key={p.id} label={p.name} sx={{ mr: 1, mb: 1 }} />
         ))}
       </Stack>
     </Stack>
