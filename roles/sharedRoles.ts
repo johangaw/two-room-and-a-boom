@@ -471,8 +471,11 @@ const templates: RoleTemplate[] = [
 const getId = (name: string, team: Team): string =>
   `${team.toLocaleLowerCase()}-${name.toLowerCase().replaceAll(" ", "-")}`;
 
-export const sharedRoles: Role[] = (["Red", "Blue"] as Team[]).flatMap((team) =>
-  templates.map((template) => ({
+const byName = <T extends { name: string }>(l: T, r: T): number =>
+  l.name.localeCompare(r.name);
+
+export const sharedRoles: Role[] = templates.sort(byName).flatMap((template) =>
+  (["Red", "Blue"] as Team[]).map((team) => ({
     ...template,
     id: getId(template.name, team),
     description: "",

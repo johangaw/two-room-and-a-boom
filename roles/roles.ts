@@ -9,19 +9,36 @@ import { sharedRoles } from "./sharedRoles";
 export const roleGroups = ([] as RoleGroup[]).concat(
   {
     name: "The president cabinet",
-    description: "",
+    description: "The primary game mode",
     roles: Object.values(presidentRoles),
   },
   {
     name: "Rock, Bag, Scissor",
-    description: "",
+    description:
+      "A cat and mouse game where each role needs to find their prey role while not being caught by their hunter",
     roles: Object.values(fourWayWinRoles),
+  },
+  {
+    name: "Shared roles",
+    description:
+      "These roles come in pairs, one for the blue team and oe for the red team.",
+    roles: sharedRoles,
+  },
+  {
+    name: "Red reinforcements",
+    description: "Additional red roles to spice tings up",
+    roles: Object.values(redRoles),
+  },
+  {
+    name: "Blue reinforcements",
+    description: "Additional blue roles to spice tings up",
+    roles: Object.values(blueRoles),
+  },
+  {
+    name: "Neutral roles",
+    description: "Roles which have their own agenda...",
+    roles: Object.values(grayRoles),
   }
-
-  // Object.values(blueRoles),
-  // Object.values(redRoles)
-  // Object.values(grayRoles),
-  // sharedRoles
 );
 
 export const allRoles = roleGroups.flatMap((rg) => rg.roles);
