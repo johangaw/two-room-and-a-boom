@@ -9,7 +9,8 @@ import { sharedRoles } from "./sharedRoles";
 export const roleGroups = ([] as RoleGroup[]).concat(
   {
     name: "The president cabinet",
-    description: "The primary game mode",
+    description:
+      "The primary game mode when the blue team needs to protect the president while the red team wants to kill him/her (and the successor)",
     roles: Object.values(presidentRoles),
   },
   {

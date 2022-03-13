@@ -43,6 +43,9 @@ export const RoleSelect: FC<RoleSelectProps> = ({
             <Typography>{group.name}</Typography>
           </AccordionSummary>
           <AccordionDetails>
+            <Typography sx={{ color: "text.secondary" }}>
+              {group.description}
+            </Typography>
             <List sx={{ width: "100%" }} disablePadding>
               {group.roles.map((role) => {
                 const selected = roles.some((r) => r.id === role.id);
